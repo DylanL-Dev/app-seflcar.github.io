@@ -389,3 +389,12 @@ function generateHistoryContent(entries) {
 
 // Afficher les entrées d'humeur lors du chargement de la page
 displayEntries();
+
+// Modification du tite pars l'humeur selection
+function saveMood(mood) {
+  // Code pour enregistrer l'humeur sélectionnée
+
+  // Mettre à jour le titre de la page avec l'humeur sélectionnée
+  document.getElementById("moodTitle").innerText =
+    "Votre humeur aujourd'hui est " + mood;
+}
