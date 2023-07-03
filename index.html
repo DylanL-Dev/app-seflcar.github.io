@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="html/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="html/css/node_modules/normalize.css/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script
+      defer
+      src="https://kit.fontawesome.com/79857fa36d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Self-Care</title>
+  </head>
+  <body>
+    <header>
+      <!-- Profil patient -->
+      <section>
+        <div id="container_profil">
+          <img
+            src="html/assets/img/profil/albert-dera-ILip77SbmOE-unsplash.jpg"
+            alt="photo de profil"
+          />
+          <div class="container_user">
+            <h1 class="name"></h1>
+            <p class="category">Patient</p>
+          </div>
+          <div class="container_notification clignote" id="cloche">
+            <i class="fa-solid fa-bell"></i>
+            <div class="bg_bell"></div>
+            <div class="min_cercle"></div>
+          </div>
+          <div class="notification-overlay" id="notificationOverlay">
+            <div class="notification-bubble" id="notificationBubble">
+              <p>Avez-vous pensé à enregistrer votre humeur aujourd'hui ?</p>
+              <span class="close-button">&times;</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Profil patient -->
+      <!-- Mood -->
+      <section>
+        <div class="title">
+          <h2>Comment vous sentez-vous aujourd'hui ?</h2>
+        </div>
+        <section>
+          <div class="container_mood">
+            <a href="#" onclick="saveMood('Furieux')">
+              <div class="cirle_mood">
+                <img src="html/assets/icone/angry.png" alt="emoji en colère" />
+              </div>
+              <div class="nav_header">
+                <ul>
+                  <li>Furieux</li>
+                </ul>
+              </div>
+            </a>
+            <a href="#" onclick="saveMood('Déprimé')">
+              <div class="cirle_mood">
+                <img
+                  src="html/assets/icone/Sad_Face_Emoji.png"
+                  alt="emoji triste"
+                />
+              </div>
+              <div class="nav_header">
+                <ul>
+                  <li>Déprimé</li>
+                </ul>
+              </div>
+            </a>
+            <a href="#" onclick="saveMood('Indifférent')">
+              <div class="cirle_mood">
+                <img
+                  src="html/assets/icone/Neutral_Face_Emoji.png"
+                  alt="emoji indifférent"
+                />
+              </div>
+              <div class="nav_header">
+                <ul>
+                  <li>Indifférent</li>
+                </ul>
+              </div>
+            </a>
+            <a href="#" onclick="saveMood('Heureux')">
+              <div class="cirle_mood">
+                <img
+                  src="html/assets/icone/Party_Face_Emoji.png"
+                  alt="emoji heureux"
+                />
+              </div>
+              <div class="nav_header">
+                <ul>
+                  <li>Heureux</li>
+                </ul>
+              </div>
+            </a>
+          </div>
+        </section>
+      </section>
+      <!-- End Mood -->
+    </header>
+    <main>
+      <section>
+        <div class="container_appontment">
+          <h2>prochain rendez-vous</h2>
+          <div class="cards">
+            <div class="conatainer_date">
+              <div class="date_appontment">
+                <h3>28</h3>
+                <p>Déc</p>
+              </div>
+            </div>
+            <div class="container_hour">
+              <div class="hour_appontment">
+                <h3>14:30</h3>
+                <p>Leila Jaques</p>
+              </div>
+              <a href="#">
+                <div>
+                  <i class="fa-solid fa-ellipsis"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container_self">
+          <i class="fa-solid fa-minus fa-2xl barre" id="bars"></i>
+          <i class="fa-solid fa-chevron-down" id="chevron"></i>
+          <h3>Soins personnels</h3>
+          <div class="nav_main">
+            <ul>
+              <li>Pratique</li>
+              <li>Vidéo</li>
+              <li>Livres</li>
+              <li>Tests</li>
+            </ul>
+          </div>
+          <div class="container_card">
+            <div class="cards_self_car_green">
+              <div class="bg_white">
+                <img
+                  src="html/assets/icone/person-in-lotus-position-500x500.png"
+                  alt="personne en lotus position"
+                />
+              </div>
+              <div class="title_self_car">
+                <h3>Meditation</h3>
+                <p>30 min</p>
+              </div>
+            </div>
+            <div class="cards_self_car_green_Lightness">
+              <div class="bg_white">
+                <img
+                  src="html/assets/icone/bed-500x500.png"
+                  alt="personne en lotus position"
+                />
+              </div>
+              <div class="title_self_car">
+                <h3>Réveillez-vous</h3>
+                <p>30 min</p>
+              </div>
+            </div>
+            <div class="cards_self_car_blue">
+              <div class="bg_white">
+                <img
+                  src="html/assets/icone/Praying Emoji [Free Download iPhone Emojis].png"
+                  alt="personne en lotus position"
+                />
+              </div>
+              <div class="title_self_car">
+                <h3>Objectif positif</h3>
+                <p>30 min</p>
+              </div>
+            </div>
+            <div class="cards_self_car_blue">
+              <div class="bg_white">
+                <img
+                  src="html/assets/icone/face-exhaling-500x500.png"
+                  alt="personne en lotus position"
+                />
+              </div>
+              <div class="title_self_car">
+                <h3>Respiration</h3>
+                <p>30 min</p>
+              </div>
+            </div>
+            <div class="cards_self_car_green">
+              <div class="bg_white">
+                <img
+                  src="html/assets/icone/eye-500x500.png"
+                  alt="personne en lotus position"
+                />
+              </div>
+              <div class="title_self_car">
+                <h3>Conscience</h3>
+                <p>30 min</p>
+              </div>
+            </div>
+            <div class="cards_self_car_green_Lightness">
+              <div class="bg_white">
+                <img
+                  src="html/assets/icone/paint-emoji-png-4119290.png"
+                  alt="personne en lotus position"
+                />
+              </div>
+
+              <div class="title_self_car">
+                <h3>Créativité</h3>
+                <p>30 min</p>
+              </div>
+            </div>
+            <div class="container_humeur">
+              <h4>Suivi mensuel de mon état émotionnel</h4>
+
+              <div id="entries"></div>
+              <button id="downloadBtn">Télécharger l'historique</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <nav id="nav_footer">
+        <div class="container_nav">
+          <div class="navigation">
+            <a href="#" class="icon_link"><i class="fa-solid fa-house"></i></a>
+            <a href="#" class="icon_link"
+              ><i class="fa-solid fa-comment"></i
+            ></a>
+            <div class="cercle_nav">
+              <a href="#" class="icon_link">
+                <i class="fa-solid fa-plus"></i
+              ></a>
+            </div>
+            <a href="#" class="icon_link"
+              ><i class="fa-solid fa-calendar"></i
+            ></a>
+            <a href="#" class="icon_link"><i class="fa-solid fa-gear"></i></a>
+          </div>
+        </div>
+      </nav>
+    </footer>
+    <script defer src="script.js"></script>
+  </body>
+</html>
