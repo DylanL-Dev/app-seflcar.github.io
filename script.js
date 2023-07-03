@@ -88,11 +88,16 @@ function displayEntries() {
 
   // Vérifier s'il y a des entrées enregistrées
   if (entries.length > 0) {
-    const latestEntry = entries[entries.length - 1];
-    const entryHTML = createEntryHTML(latestEntry.date, latestEntry.mood);
-    entriesContainer.innerHTML = "Aujourd'hui vous êtes : " + entryHTML;
+    // Créer le contenu HTML de toutes les entrées
+    const entriesHTML = entries
+      .map((entry) => {
+        return createEntryHTML(entry.date, entry.mood);
+      })
+      .join(""); // Fusionner les entrées en une seule chaîne
+
+    entriesContainer.innerHTML = entriesHTML;
   } else {
-    entriesContainer.innerHTML = "";
+    entriesContainer.innerHTML = "<p>Aucune entrée disponible.</p>";
   }
 }
 
@@ -293,7 +298,48 @@ function saveMood(mood) {
 
   // Afficher les entrées mises à jour
   displayEntries();
+
+  // Mettre à jour le titre de la page avec l'humeur sélectionnée
+  updateTitle(mood);
 }
+
+function updateTitle(mood) {
+  document.getElementById("moodTitle").innerText =
+    "Votre humeur aujourd'hui est " + mood;
+}
+
+// Ajouter les écouteurs d'événements pour les clics sur les emojis
+document
+  .querySelector(
+    '.container_mood a[href="#entries"][onclick="saveMood(\'Furieux\')"]'
+  )
+  .addEventListener("click", function () {
+    updateTitle("Furieux");
+  });
+
+document
+  .querySelector(
+    '.container_mood a[href="#entries"][onclick="saveMood(\'Déprimé\')"]'
+  )
+  .addEventListener("click", function () {
+    updateTitle("Déprimé");
+  });
+
+document
+  .querySelector(
+    '.container_mood a[href="#entries"][onclick="saveMood(\'Indifférent\')"]'
+  )
+  .addEventListener("click", function () {
+    updateTitle("Indifférent");
+  });
+
+document
+  .querySelector(
+    '.container_mood a[href="#entries"][onclick="saveMood(\'Heureux\')"]'
+  )
+  .addEventListener("click", function () {
+    updateTitle("Heureux");
+  });
 
 // Événement de clic sur les emojis
 const emojis = document.getElementsByClassName("circle_mood");
@@ -311,7 +357,6 @@ downloadBtn.addEventListener("click", function () {
   downloadHistory();
 });
 
-// Fonction pour télécharger l'historique
 // Fonction pour télécharger l'historique d'humeur
 function downloadHistory() {
   // Désactiver le bouton de téléchargement
@@ -390,11 +435,53 @@ function generateHistoryContent(entries) {
 // Afficher les entrées d'humeur lors du chargement de la page
 displayEntries();
 
-// Modification du tite pars l'humeur selection
-function saveMood(mood) {
-  // Code pour enregistrer l'humeur sélectionnée
+/////////////////////////////////////////////////////////
 
-  // Mettre à jour le titre de la page avec l'humeur sélectionnée
-  document.getElementById("moodTitle").innerText =
-    "Votre humeur aujourd'hui est " + mood;
+// Fonction pour mettre à jour le camembert avec les données des émotions
+/*function updateEmotionChart() {
+  const emotionsData = {
+    labels: ['Furieux', 'Déprimé', 'Indifférent', 'Heureux'],
+    datasets: [{
+      data: [
+        parseInt(localStorage.getItem('Furieux')) || 0,
+        parseInt(localStorage.getItem('Déprimé')) || 0,
+        parseInt(localStorage.getItem('Indifférent')) || 0,
+        parseInt(localStorage.getItem('Heureux')) || 0
+      ],
+      backgroundColor: [
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56',
+        '#4BC0C0'
+      ]
+    }]
+  };
+
+  const ctx = document.getElementById('emotionChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'pie',
+    data: emotionsData
+  });
+
+  // Calculer le pourcentage des émotions
+  const totalEmotions = emotionsData.datasets[0].data.reduce((a, b) => a + b, 0);
+  const percentages = emotionsData.datasets[0].data.map(emotionCount => ((emotionCount / totalEmotions) * 100).toFixed(2) + '%');
+
+  // Afficher les pourcentages
+  document.getElementById('emotionPercentages').innerHTML = percentages.join(' | ');
 }
+
+// Fonction pour enregistrer l'émotion dans le stockage local
+function saveMood(emotion) {
+  const emotionCount = parseInt(localStorage.getItem(emotion)) || 0;
+  localStorage.setItem(emotion, emotionCount + 1);
+
+  updateEmotionChart(); // Mettre à jour le camembert des émotions
+}
+
+// Mettre à jour le camembert lors du chargement de la page et toutes les 24 heures
+window.onload = function() {
+  updateEmotionChart();
+  setInterval(updateEmotionChart, 24 * 60 * 60 * 1000); // Mettre à jour toutes les 24 heures
+};
+ */

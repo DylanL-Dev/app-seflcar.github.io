@@ -18,7 +18,7 @@
       src="https://kit.fontawesome.com/79857fa36d.js"
       crossorigin="anonymous"
     ></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Self-Care</title>
   </head>
   <body>
@@ -41,7 +41,10 @@
           </div>
           <div class="notification-overlay" id="notificationOverlay">
             <div class="notification-bubble" id="notificationBubble">
-              <p>Avez-vous pensé à enregistrer votre humeur aujourd'hui ?</p>
+              <p>
+                Avez-vous pensé à enregistrer votre humeur aujourd'hui ? Vous
+                aviez 24h pour changer votre état émotionnel
+              </p>
               <span class="close-button">&times;</span>
             </div>
           </div>
@@ -230,6 +233,10 @@
             </div>
           </div>
         </div>
+        <!-- <div id="emotionChartContainer">
+          <canvas id="emotionChart"></canvas>
+      </div>-->
+        <div id="emotionPercentages"></div>
       </section>
     </main>
     <footer>
