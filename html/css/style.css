@@ -546,4 +546,21 @@ ul {
     margin-bottom: 20px;
     text-align: center;
   }
+
+  .calcule_en_cours {
+    animation: calcule 2s ease 0s infinite normal forwards;
+  }
+
+  @keyframes calcule {
+    0%,
+    50%,
+    100% {
+      opacity: 1;
+    }
+
+    25%,
+    75% {
+      opacity: 0.2;
+    }
+  }
 }
