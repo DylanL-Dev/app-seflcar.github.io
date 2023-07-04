@@ -230,13 +230,14 @@
 
               <div id="entries"></div>
               <button id="downloadBtn">Télécharger l'historique</button>
+
+              <div id="emotionChartContainer">
+                <canvas id="emotionChart"></canvas>
+              </div>
+              <div id="emotionPercentages"></div>
             </div>
           </div>
         </div>
-        <!-- <div id="emotionChartContainer">
-          <canvas id="emotionChart"></canvas>
-      </div>-->
-        <div id="emotionPercentages"></div>
       </section>
     </main>
     <footer>
@@ -263,5 +264,10 @@
       </nav>
     </footer>
     <script defer src="script.js"></script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        updateEmotionChart();
+      });
+    </script>
   </body>
 </html>

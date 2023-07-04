@@ -438,7 +438,7 @@ displayEntries();
 /////////////////////////////////////////////////////////
 
 // Fonction pour mettre à jour le camembert avec les données des émotions
-/*function updateEmotionChart() {
+function updateEmotionChart() {
   const emotionsData = {
     labels: ['Furieux', 'Déprimé', 'Indifférent', 'Heureux'],
     datasets: [{
@@ -464,24 +464,41 @@ displayEntries();
   });
 
   // Calculer le pourcentage des émotions
+  const today = new Date();
+  const midnight = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
   const totalEmotions = emotionsData.datasets[0].data.reduce((a, b) => a + b, 0);
-  const percentages = emotionsData.datasets[0].data.map(emotionCount => ((emotionCount / totalEmotions) * 100).toFixed(2) + '%');
+  let percentages = emotionsData.datasets[0].data.map(emotionCount => {
+    const percentage = ((emotionCount / totalEmotions) * 100).toFixed(2) + '%';
+    return {
+      percentage,
+      timestamp: today.getTime()
+    };
+  });
 
-  // Afficher les pourcentages
-  document.getElementById('emotionPercentages').innerHTML = percentages.join(' | ');
+  // Récupérer les entrées d'humeur enregistrées
+  const moodEntries = document.getElementById('entries');
+  const savedEntries = moodEntries.innerHTML.trim();
+
+  // Vérifier si une entrée a été ajoutée aujourd'hui
+  const todayEntry = savedEntries.includes(today.toDateString());
+
+  if (!todayEntry) {
+    // Ajouter une nouvelle entrée d'humeur pour aujourd'hui
+    const todayEntryHTML = `<div data-timestamp="${today.getTime()}">${today.toDateString()} - ${percentages.map(p => p.percentage).join(' | ')}</div>`;
+    moodEntries.innerHTML = todayEntryHTML + savedEntries;
+  } else {
+    // Mettre à jour l'entrée d'humeur existante pour aujourd'hui
+    const updatedEntries = savedEntries.replace(new RegExp(today.toDateString() + '.*'), `${today.toDateString()} - ${percentages.map(p => p.percentage).join(' | ')}`);
+    moodEntries.innerHTML = updatedEntries;
+  }
+
+  // Supprimer les entrées d'humeur antérieures à aujourd'hui
+  const entries = moodEntries.children;
+  for (let i = entries.length - 1; i >= 0; i--) {
+    const entryTimestamp = parseInt(entries[i].dataset.timestamp);
+    if (entryTimestamp < midnight.getTime()) {
+      moodEntries.removeChild(entries[i]);
+    }
+  }
 }
 
-// Fonction pour enregistrer l'émotion dans le stockage local
-function saveMood(emotion) {
-  const emotionCount = parseInt(localStorage.getItem(emotion)) || 0;
-  localStorage.setItem(emotion, emotionCount + 1);
-
-  updateEmotionChart(); // Mettre à jour le camembert des émotions
-}
-
-// Mettre à jour le camembert lors du chargement de la page et toutes les 24 heures
-window.onload = function() {
-  updateEmotionChart();
-  setInterval(updateEmotionChart, 24 * 60 * 60 * 1000); // Mettre à jour toutes les 24 heures
-};
- */
