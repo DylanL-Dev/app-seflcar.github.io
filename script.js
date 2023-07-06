@@ -437,68 +437,69 @@ displayEntries();
 
 /////////////////////////////////////////////////////////
 
-// Fonction pour mettre à jour le camembert avec les données des émotions
+// Fonction pour mettre à jour le graphique d'émotions
+
+// Fonction pour mettre à jour le graphique d'émotions
 function updateEmotionChart() {
+  // Récupérer les données des émotions enregistrées dans le stockage local
+  const furiousCount = parseInt(localStorage.getItem("Furieux")) || 0;
+  const depressedCount = parseInt(localStorage.getItem("Déprimé")) || 0;
+  const indifferentCount = parseInt(localStorage.getItem("Indifférent")) || 0;
+  const happyCount = parseInt(localStorage.getItem("Heureux")) || 0;
+
+  // Créer les données pour le graphique en camembert
   const emotionsData = {
-    labels: ['Furieux', 'Déprimé', 'Indifférent', 'Heureux'],
-    datasets: [{
-      data: [
-        parseInt(localStorage.getItem('Furieux')) || 0,
-        parseInt(localStorage.getItem('Déprimé')) || 0,
-        parseInt(localStorage.getItem('Indifférent')) || 0,
-        parseInt(localStorage.getItem('Heureux')) || 0
-      ],
-      backgroundColor: [
-        '#FF6384',
-        '#36A2EB',
-        '#FFCE56',
-        '#4BC0C0'
-      ]
-    }]
+    labels: ["Furieux", "Déprimé", "Indifférent", "Heureux"],
+    datasets: [
+      {
+        data: [furiousCount, depressedCount, indifferentCount, happyCount],
+        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+      },
+    ],
   };
 
-  const ctx = document.getElementById('emotionChart').getContext('2d');
+  // Créer le graphique en camembert avec les données des émotions
+  const ctx = document.getElementById("emotionChart").getContext("2d");
   new Chart(ctx, {
-    type: 'pie',
-    data: emotionsData
+    type: "pie",
+    data: emotionsData,
   });
-
-  // Calculer le pourcentage des émotions
-  const today = new Date();
-  const midnight = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
-  const totalEmotions = emotionsData.datasets[0].data.reduce((a, b) => a + b, 0);
-  let percentages = emotionsData.datasets[0].data.map(emotionCount => {
-    const percentage = ((emotionCount / totalEmotions) * 100).toFixed(2) + '%';
-    return {
-      percentage,
-      timestamp: today.getTime()
-    };
-  });
-
-  // Récupérer les entrées d'humeur enregistrées
-  const moodEntries = document.getElementById('entries');
-  const savedEntries = moodEntries.innerHTML.trim();
-
-  // Vérifier si une entrée a été ajoutée aujourd'hui
-  const todayEntry = savedEntries.includes(today.toDateString());
-
-  if (!todayEntry) {
-    // Ajouter une nouvelle entrée d'humeur pour aujourd'hui
-    const todayEntryHTML = `<div data-timestamp="${today.getTime()}">${today.toDateString()} - ${percentages.map(p => p.percentage).join(' | ')}</div>`;
-    moodEntries.innerHTML = todayEntryHTML + savedEntries;
-  } else {
-    // Mettre à jour l'entrée d'humeur existante pour aujourd'hui
-    const updatedEntries = savedEntries.replace(new RegExp(today.toDateString() + '.*'), `${today.toDateString()} - ${percentages.map(p => p.percentage).join(' | ')}`);
-    moodEntries.innerHTML = updatedEntries;
-  }
-
-  // Supprimer les entrées d'humeur antérieures à aujourd'hui
-  const entries = moodEntries.children;
-  for (let i = entries.length - 1; i >= 0; i--) {
-    const entryTimestamp = parseInt(entries[i].dataset.timestamp);
-    if (entryTimestamp < midnight.getTime()) {
-      moodEntries.removeChild(entries[i]);
-    }
-  }
 }
 
+// Fonction pour enregistrer l'humeur sélectionnée par l'utilisateur
+function saveMood(mood) {
+  // Réinitialiser les entrées pour toutes les émotions à 0
+  localStorage.setItem("Furieux", 0);
+  localStorage.setItem("Déprimé", 0);
+  localStorage.setItem("Indifférent", 0);
+  localStorage.setItem("Heureux", 0);
+
+  // Enregistrer l'humeur sélectionnée
+  localStorage.setItem(mood, 1);
+
+  // Mettre à jour le graphique des émotions
+  updateEmotionChart();
+}
+
+// Fonction pour mettre à jour le graphique des émotions à minuit
+function updateEmotionChartAtMidnight() {
+  const now = new Date();
+  const midnight = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1,
+    0,
+    0,
+    0
+  ); // Prochain minuit
+  const timeUntilMidnight = midnight.getTime() - now.getTime();
+
+  setTimeout(function () {
+    updateEmotionChart();
+    updateEmotionChartAtMidnight();
+  }, timeUntilMidnight);
+}
+
+// Mettre à jour le graphique des émotions lors du chargement de la page
+updateEmotionChart();
+updateEmotionChartAtMidnight();
