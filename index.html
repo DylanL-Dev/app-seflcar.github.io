@@ -59,7 +59,7 @@
 
         <section>
           <div class="container_mood">
-            <a href="#entries" onclick="saveMood('Furieux')">
+            <a href="#nav_footer" onclick="saveMood('Furieux')">
               <div class="cirle_mood">
                 <img src="html/assets/icone/angry.png" alt="emoji en colère" />
               </div>
@@ -69,7 +69,7 @@
                 </ul>
               </div>
             </a>
-            <a href="#entries" onclick="saveMood('Déprimé')">
+            <a href="#nav_footer" onclick="saveMood('Déprimé')">
               <div class="cirle_mood">
                 <img
                   src="html/assets/icone/Sad_Face_Emoji.png"
@@ -82,7 +82,7 @@
                 </ul>
               </div>
             </a>
-            <a href="#entries" onclick="saveMood('Indifférent')">
+            <a href="#nav_footer" onclick="saveMood('Indifférent')">
               <div class="cirle_mood">
                 <img
                   src="html/assets/icone/Neutral_Face_Emoji.png"
@@ -95,7 +95,7 @@
                 </ul>
               </div>
             </a>
-            <a href="#entries" onclick="saveMood('Heureux')">
+            <a href="#nav_footer" onclick="saveMood('Heureux')">
               <div class="cirle_mood">
                 <img
                   src="html/assets/icone/Party_Face_Emoji.png"
@@ -233,9 +233,9 @@
               <div id="emotionChartContainer">
                 <canvas id="emotionChart"></canvas>
               </div>
-              <div id="monthlyEmotionChartContainer">
+              <!--<div id="monthlyEmotionChartContainer">
                 <canvas id="monthlyEmotionChart"></canvas>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
@@ -244,7 +244,7 @@
     <footer>
       <nav id="nav_footer">
         <div class="container_nav">
-          <div class="navigation">
+          <div class="navigation" id="html_scroll_nav">
             <a href="#container_profil" class="icon_link"
               ><i class="fa-solid fa-house"></i
             ></a>

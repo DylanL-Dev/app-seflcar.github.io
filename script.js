@@ -435,71 +435,183 @@ function generateHistoryContent(entries) {
 // Afficher les entrées d'humeur lors du chargement de la page
 displayEntries();
 
-/////////////////////////////////////////////////////////
-
-// Fonction pour mettre à jour le graphique d'émotions
-
+//////////////////////////        GRAPHIQUE         ///////////////////////////////
 // Fonction pour mettre à jour le graphique d'émotions
 function updateEmotionChart() {
   // Récupérer les données des émotions enregistrées dans le stockage local
-  const furiousCount = parseInt(localStorage.getItem("Furieux")) || 0;
-  const depressedCount = parseInt(localStorage.getItem("Déprimé")) || 0;
-  const indifferentCount = parseInt(localStorage.getItem("Indifférent")) || 0;
-  const happyCount = parseInt(localStorage.getItem("Heureux")) || 0;
-
-  // Créer les données pour le graphique en camembert
-  const emotionsData = {
-    labels: ["Furieux", "Déprimé", "Indifférent", "Heureux"],
-    datasets: [
-      {
-        data: [furiousCount, depressedCount, indifferentCount, happyCount],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
-      },
-    ],
-  };
+  const entries = JSON.parse(localStorage.getItem("entries")) || [];
+  const emotionsData = calculateEmotionData(entries);
 
   // Créer le graphique en camembert avec les données des émotions
   const ctx = document.getElementById("emotionChart").getContext("2d");
+  if (ctx.chart) {
+    ctx.chart.destroy(); // Supprimer le graphique existant
+  }
   new Chart(ctx, {
     type: "pie",
     data: emotionsData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
   });
 }
 
 // Fonction pour enregistrer l'humeur sélectionnée par l'utilisateur
 function saveMood(mood) {
-  // Réinitialiser les entrées pour toutes les émotions à 0
-  localStorage.setItem("Furieux", 0);
-  localStorage.setItem("Déprimé", 0);
-  localStorage.setItem("Indifférent", 0);
-  localStorage.setItem("Heureux", 0);
+  const entryDate = new Date().toLocaleDateString();
 
-  // Enregistrer l'humeur sélectionnée
-  localStorage.setItem(mood, 1);
+  // Rechercher une entrée existante avec la même date
+  const entries = JSON.parse(localStorage.getItem("entries")) || [];
+  const existingEntryIndex = entries.findIndex(
+    (entry) => entry.date === entryDate
+  );
+
+  if (existingEntryIndex !== -1) {
+    // Remplacer l'entrée existante avec la nouvelle humeur
+    entries[existingEntryIndex].mood = mood;
+  } else {
+    // Ajouter une nouvelle entrée
+    entries.push({
+      date: entryDate,
+      mood: mood,
+    });
+  }
+
+  localStorage.setItem("entries", JSON.stringify(entries));
+
+  // Mettre à jour le graphique des émotions
+  updateEmotionChart();
+
+  // Mettre à jour l'élément HTML des entrées d'humeur
+  displayEntries();
+}
+
+// Fonction pour calculer les données du graphique d'émotions
+function calculateEmotionData(entries) {
+  const emotions = ["Furieux", "Déprimé", "Indifférent", "Heureux"];
+  const emotionCounts = [0, 0, 0, 0];
+
+  for (const entry of entries) {
+    const index = emotions.indexOf(entry.mood);
+    if (index !== -1) {
+      emotionCounts[index]++;
+    }
+  }
+
+  return {
+    labels: emotions,
+    datasets: [
+      {
+        data: emotionCounts,
+        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+      },
+    ],
+  };
+}
+
+// Fonction pour afficher les entrées d'humeur
+function displayEntries() {
+  const entriesContainer = document.getElementById("entries");
+  const entries = JSON.parse(localStorage.getItem("entries")) || [];
+
+  // Vérifier s'il y a des entrées enregistrées
+  if (entries.length > 0) {
+    const entryHTML = entries
+      .map((entry) => createEntryHTML(entry.date, entry.mood))
+      .join("");
+    entriesContainer.innerHTML = entryHTML;
+  } else {
+    entriesContainer.innerHTML =
+      "<p class='no-entries'>Aucune entrée d'humeur enregistrée.</p>";
+  }
+
+  // Ajouter du style au paragraphe généré
+  const noEntriesElement = entriesContainer.querySelector(".no-entries");
+  if (noEntriesElement) {
+    noEntriesElement.style.color = "#f5f5f5";
+    noEntriesElement.style.textAlign = "center";
+    noEntriesElement.style.fontWeight = "bold";
+  }
+}
+
+/**
+ * Crée le code HTML pour une entrée d'humeur
+ * @param {string} date - La date de l'entrée
+ * @param {string} mood - L'humeur enregistrée
+ * @returns {string} Le code HTML de l'entrée
+ */
+function createEntryHTML(date, mood) {
+  const today = new Date().toLocaleDateString();
+  const entryDate = date === today ? "Aujourd'hui<br>" : date;
+  const entryHTML = `
+    <div class="entry">
+      <div class="date">${entryDate}</div>
+      <div class="mood">
+        ${
+          date === today
+            ? "<span class='highlighted'>Votre état d'humeur actuel est :</span>"
+            : "État d'humeur :"
+        }
+        <span class="name">${mood}</span>
+      </div>
+    </div>
+  `;
+  return entryHTML;
+}
+
+// Mettre à jour le graphique des émotions lors du chargement de la page
+updateEmotionChart();
+
+// Ajouter des écouteurs d'événements aux boutons d'humeur
+const moodButtons = document.querySelectorAll(".mood-button");
+moodButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const selectedMood = event.target.dataset.mood;
+    saveMood(selectedMood);
+  });
+});
+
+// Fonction pour enregistrer l'humeur finale de la journée dans le graphique
+function saveDailyMood() {
+  const entryDate = new Date().toLocaleDateString();
+
+  // Récupérer l'humeur actuelle du patient
+  const currentMood = localStorage.getItem("currentMood");
+
+  // Rechercher une entrée existante avec la même date
+  const entries = JSON.parse(localStorage.getItem("entries")) || [];
+  const existingEntryIndex = entries.findIndex(
+    (entry) => entry.date === entryDate
+  );
+
+  if (existingEntryIndex !== -1) {
+    // Remplacer l'entrée existante avec l'humeur actuelle
+    entries[existingEntryIndex].mood = currentMood;
+  } else {
+    // Ajouter une nouvelle entrée
+    entries.push({
+      date: entryDate,
+      mood: currentMood,
+    });
+  }
+
+  localStorage.setItem("entries", JSON.stringify(entries));
 
   // Mettre à jour le graphique des émotions
   updateEmotionChart();
 }
 
-// Fonction pour mettre à jour le graphique des émotions à minuit
-function updateEmotionChartAtMidnight() {
-  const now = new Date();
-  const midnight = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate() + 1,
-    0,
-    0,
-    0
-  ); // Prochain minuit
-  const timeUntilMidnight = midnight.getTime() - now.getTime();
-
-  setTimeout(function () {
-    updateEmotionChart();
-    updateEmotionChartAtMidnight();
-  }, timeUntilMidnight);
-}
-
-// Mettre à jour le graphique des émotions lors du chargement de la page
-updateEmotionChart();
-updateEmotionChartAtMidnight();
+// Planifier l'enregistrement de l'humeur finale de la journée à minuit
+const now = new Date();
+const midnight = new Date(
+  now.getFullYear(),
+  now.getMonth(),
+  now.getDate() + 1,
+  0,
+  0,
+  0
+);
+const timeUntilMidnight = midnight.getTime() - now.getTime();
+setTimeout(saveDailyMood, timeUntilMidnight);
+//////////////////////////       END GRAPHIQUE         ///////////////////////////////
