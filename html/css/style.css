@@ -1,6 +1,6 @@
 /* fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-/* End fonts*/
+/* End fonts */
 
 * {
   margin: 0;
@@ -8,9 +8,11 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
   background-color: #f5f5f5;
 }
@@ -27,8 +29,8 @@ a {
 ul {
   list-style-type: none;
 }
-/* Profil & notification */
 
+/* Profil & notification */
 @media screen and (max-width: 768px) {
   /* Styles for the profile section */
   #container_profil {
@@ -56,7 +58,6 @@ ul {
     0% {
       transform: scale(0);
     }
-
     100% {
       transform: scale(1);
     }
@@ -168,7 +169,6 @@ ul {
   /* Mood */
   .title {
     padding-left: 15px;
-
     font-size: 15px;
   }
 
@@ -183,14 +183,17 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-left: 8px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     background-color: #f5f5f5;
+    cursor: none;
   }
 
-  .container_mood img {
-    width: 50%;
+  .container_mood a img {
+    width: 65%;
+    cursor: none;
   }
 
   .nav_header {
@@ -276,7 +279,6 @@ ul {
   .container_self {
     width: 100%;
     height: auto;
-
     border-radius: 35px 35px 0px 0px;
   }
 
@@ -344,16 +346,16 @@ ul {
 
   /* Cards_self */
   .container_card {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 20px;
-    padding: 0 15px;
   }
 
   .cards_self_car_green {
-    width: 140px;
+    width: 40%;
     height: 140px;
     background-color: #7cb37ca8;
     border-radius: 20px;
@@ -361,18 +363,19 @@ ul {
   }
 
   .bg_white {
+    /* fons blanc dans les cartes */
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 12px;
     margin: 20px;
-    width: 40px;
+    width: 30%;
     height: 40px;
     background-color: #f5f5f5;
   }
 
   .cards_self_car_green img {
-    width: 70%;
+    width: 40%;
   }
 
   .title_self_car {
@@ -397,7 +400,7 @@ ul {
   }
 
   .cards_self_car_green_Lightness {
-    width: 140px;
+    width: 40%;
     height: 140px;
     background-color: #b3ffb3;
     border-radius: 20px;
@@ -409,7 +412,7 @@ ul {
   }
 
   .cards_self_car_blue {
-    width: 140px;
+    width: 40%;
     height: 140px;
     background-color: #9db9e4;
     border-radius: 20px;
@@ -417,10 +420,86 @@ ul {
   }
 
   .cards_self_car_blue img {
-    width: 70%;
+    width: 40%;
   }
 
   /* End cards_self*/
+
+  /* Graphique */
+  .container_humeur {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 35px 35px 0 0;
+    background-color: #1c2d27;
+    flex-wrap: nowrap;
+  }
+
+  h4 {
+    font-size: 23px;
+    padding: 15px;
+    text-align: center;
+    color: #f5f5f5; /* Couleur du texte */
+  }
+
+  .entry {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: #f5f5f5; /* Couleur du texte */
+    border-radius: 5px;
+    background-color: #314e44;
+  }
+
+  .entry .date {
+    font-weight: bold;
+    color: #f5f5f5; /* Couleur du texte */
+  }
+
+  #downloadBtn {
+    margin-top: 15px;
+    background-color: #299272;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  #emotionChartContainer {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  #emotionChart {
+    width: 100%;
+    max-width: 600px; /* largeur maximale selon vos besoins */
+    height: auto; /* hauteur s'adapte automatiquement au contenu */
+  }
+
+  #emotionPercentages {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  #refresh {
+    margin-top: 15px;
+    background-color: #299272;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  /* End Graphique */
 
   /* Nav footer */
   .container_nav {
@@ -428,7 +507,6 @@ ul {
     height: auto;
     width: 100%;
     padding-top: 50px;
-    z-index: 1;
   }
 
   .navigation {
@@ -437,7 +515,7 @@ ul {
     align-items: center;
     justify-content: space-around;
     font-size: 20px;
-    position: relative;
+    position: relativefic;
   }
 
   .cercle_nav {
@@ -485,75 +563,4 @@ ul {
     }
   }
   /* End Nav footer */
-
-  .container_humeur {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 10px;
-    border-radius: 35px 0 35px 0;
-    background-color: #1c2d27;
-    flex: 1;
-  }
-
-  h4 {
-    font-size: 23px;
-    padding: 15px;
-    text-align: center;
-    color: #f5f5f5; /* Couleur du texte */
-  }
-
-  .entry {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    color: #f5f5f5; /* Couleur du texte */
-    border-radius: 5px;
-    background-color: #314e44;
-  }
-
-  .entry .date {
-    font-weight: bold;
-    color: #f5f5f5; /* Couleur du texte */
-  }
-
-  #downloadBtn {
-    margin-top: 15px;
-    background-color: #299272;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  #emotionChartContainer {
-    width: 100%;
-    overflow-x: auto; /* Utilisez "auto" pour afficher une barre de défilement uniquement lorsque nécessaire */
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-
-  #emotionChart {
-    width: 100%;
-    max-width: 600px; /* Ajustez la largeur maximale selon vos besoins */
-    height: auto; /* Assurez-vous que la hauteur s'adapte automatiquement au contenu */
-  }
-
-  #emotionPercentages {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  #emotionChartContainer {
-    max-width: 100%;
-    overflow-x: scroll;
-  }
-
-  #emotionChart {
-    display: inline-block;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
 }

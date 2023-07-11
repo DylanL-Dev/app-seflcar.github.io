@@ -61,7 +61,7 @@
           <div class="container_mood">
             <div onClick="saveMoodAndUpdatePage('Furieux')">
               <div class="cirle_mood">
-                <img src="html/assets/icone/angry.png" alt="emoji en colère" />
+                <a href="#refresh"><img src="html/assets/icone/angry.png" alt="emoji en colère" /></a>
               </div>
               <div class="nav_header">
                 <ul>
@@ -71,10 +71,10 @@
             </div>
             <div onClick="saveMoodAndUpdatePage('Déprimé')">
               <div class="cirle_mood">
-                <img
+                <a href="#refresh"><img
                   src="html/assets/icone/Sad_Face_Emoji.png"
                   alt="emoji triste"
-                />
+                /></a>
               </div>
               <div class="nav_header">
                 <ul>
@@ -84,10 +84,10 @@
             </div>
             <div onClick="saveMoodAndUpdatePage('Indifférent');">
               <div class="cirle_mood">
-                <img
+                <a href="#refresh"> <img
                   src="html/assets/icone/Neutral_Face_Emoji.png"
                   alt="emoji indifférent"
-                />
+                /></a>
               </div>
               <div class="nav_header">
                 <ul>
@@ -97,10 +97,10 @@
             </div>
             <div onClick="saveMoodAndUpdatePage('Heureux');">
               <div class="cirle_mood">
-                <img
+                <a href="#refresh"> <img
                   src="html/assets/icone/Party_Face_Emoji.png"
                   alt="emoji heureux"
-                />
+                /></a>
               </div>
               <div class="nav_header">
                 <ul>
@@ -225,15 +225,18 @@
                 <p>30 min</p>
               </div>
             </div>
-            <div class="container_humeur">
-              <h4>Suivi de mon état émotionnel</h4>
-              <div id="entries"></div>
-              <button id="downloadBtn">Télécharger l'historique</button>
-
-              <div id="emotionChartContainer">
-                <canvas id="emotionChart"></canvas>
+            <section>
+              <div class="container_humeur">
+                <h4>Suivi de mon état émotionnel</h4>
+                <div id="entries"></div>
+                <button id="downloadBtn">Télécharger l'historique</button>
+                <div id="emotionChartContainer">
+                  <canvas id="emotionChart"></canvas>
+                </div>
+                <button id="refresh" onClick="window.location.reload();">Actiualiser mon graphique</button>
               </div>
-            </div>
+       
+            </section>
           </div>
         </div>
       </section>
