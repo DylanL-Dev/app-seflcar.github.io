@@ -129,30 +129,6 @@ function initializeApp() {
 
   // Afficher les entrées d'humeur
   displayEntries();
-}
-
-// Gestionnaire d'événement au chargement du document
-document.addEventListener("DOMContentLoaded", function () {
-  // Vérifier si le patient a déjà renseigné son nom complet
-  const patientFullName = localStorage.getItem("patientFullName");
-
-  if (!patientFullName) {
-    let name = "";
-    while (name.trim().length === 0) {
-      const confirmed = confirm(
-        "Veuillez saisir votre nom et prénom complet :"
-      );
-      if (confirmed) {
-        name = prompt("Nom et prénom complet :");
-      } else {
-        // L'utilisateur a refusé la saisie du nom et prénom, vous pouvez ajouter une logique de gestion de cette situation.
-        return;
-      }
-    }
-    localStorage.setItem("patientFullName", name);
-  }
-
-  initializeApp();
 
   // Ajouter un gestionnaire d'événement aux emojis
   const emojis = document.getElementsByClassName("circle_mood");
@@ -169,6 +145,11 @@ document.addEventListener("DOMContentLoaded", function () {
   downloadBtn.addEventListener("click", function () {
     downloadHistory();
   });
+}
+
+// Gestionnaire d'événement au chargement du document
+document.addEventListener("DOMContentLoaded", function () {
+  initializeApp();
 });
 
 // notification cloche
@@ -241,8 +222,6 @@ function displayEntries() {
   noEntriesElement.style.textAlign = "center";
   noEntriesElement.style.fontWeight = "bold";
   // Ajoutez d'autres styles selon vos préférences
-
-  // ...
 }
 
 /**
@@ -444,9 +423,6 @@ function updateEmotionChart() {
 
   // Créer le graphique en camembert avec les données des émotions
   const ctx = document.getElementById("emotionChart").getContext("2d");
-  if (ctx.chart) {
-    ctx.chart.destroy(); // Supprimer le graphique existant
-  }
   new Chart(ctx, {
     type: "pie",
     data: emotionsData,
@@ -485,6 +461,17 @@ function saveMood(mood) {
 
   // Mettre à jour l'élément HTML des entrées d'humeur
   displayEntries();
+}
+
+// Fonction pour enregistrer l'humeur et actualiser la page
+function saveMoodAndUpdatePage(mood) {
+  // Enregistrer l'humeur dans le stockage local
+  saveMood(mood);
+
+  // Actualiser la page après un délai de 1 seconde (1000 millisecondes)
+  setTimeout(() => {
+    location.reload();
+  }, 1000);
 }
 
 // Fonction pour calculer les données du graphique d'émotions

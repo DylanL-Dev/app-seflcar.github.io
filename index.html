@@ -59,7 +59,7 @@
 
         <section>
           <div class="container_mood">
-            <a href="#nav_footer" onclick="saveMood('Furieux')">
+            <div onClick="saveMoodAndUpdatePage('Furieux')">
               <div class="cirle_mood">
                 <img src="html/assets/icone/angry.png" alt="emoji en colère" />
               </div>
@@ -68,8 +68,8 @@
                   <li>Furieux</li>
                 </ul>
               </div>
-            </a>
-            <a href="#nav_footer" onclick="saveMood('Déprimé')">
+            </div>
+            <div onClick="saveMoodAndUpdatePage('Déprimé')">
               <div class="cirle_mood">
                 <img
                   src="html/assets/icone/Sad_Face_Emoji.png"
@@ -81,8 +81,8 @@
                   <li>Déprimé</li>
                 </ul>
               </div>
-            </a>
-            <a href="#nav_footer" onclick="saveMood('Indifférent')">
+            </div>
+            <div onClick="saveMoodAndUpdatePage('Indifférent');">
               <div class="cirle_mood">
                 <img
                   src="html/assets/icone/Neutral_Face_Emoji.png"
@@ -94,8 +94,8 @@
                   <li>Indifférent</li>
                 </ul>
               </div>
-            </a>
-            <a href="#nav_footer" onclick="saveMood('Heureux')">
+            </div>
+            <div onClick="saveMoodAndUpdatePage('Heureux');">
               <div class="cirle_mood">
                 <img
                   src="html/assets/icone/Party_Face_Emoji.png"
@@ -107,7 +107,7 @@
                   <li>Heureux</li>
                 </ul>
               </div>
-            </a>
+            </div>
           </div>
         </section>
       </section>
@@ -226,16 +226,13 @@
               </div>
             </div>
             <div class="container_humeur">
-              <h4>Suivi mensuel de mon état émotionnel</h4>
-           <div id="entries"></div>
-              <button id="downloadBtn">Télécharger l'historique</button> 
+              <h4>Suivi de mon état émotionnel</h4>
+              <div id="entries"></div>
+              <button id="downloadBtn">Télécharger l'historique</button>
 
               <div id="emotionChartContainer">
                 <canvas id="emotionChart"></canvas>
               </div>
-              <!--<div id="monthlyEmotionChartContainer">
-                <canvas id="monthlyEmotionChart"></canvas>
-              </div>-->
             </div>
           </div>
         </div>

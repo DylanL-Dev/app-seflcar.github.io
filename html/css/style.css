@@ -486,9 +486,6 @@ ul {
   }
   /* End Nav footer */
 
-  /* Boutton de téléchargements */
-
-  /* END Boutton de téléchargements */
   .container_humeur {
     display: flex;
     justify-content: center;
@@ -497,6 +494,7 @@ ul {
     padding: 10px;
     border-radius: 35px 0 35px 0;
     background-color: #1c2d27;
+    flex: 1;
   }
 
   h4 {
@@ -531,14 +529,16 @@ ul {
     cursor: pointer;
   }
   #emotionChartContainer {
-    max-width: 100%;
-    overflow-x: scroll;
+    width: 100%;
+    overflow-x: auto; /* Utilisez "auto" pour afficher une barre de défilement uniquement lorsque nécessaire */
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 
   #emotionChart {
-    display: inline-block;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    width: 100%;
+    max-width: 600px; /* Ajustez la largeur maximale selon vos besoins */
+    height: auto; /* Assurez-vous que la hauteur s'adapte automatiquement au contenu */
   }
 
   #emotionPercentages {
@@ -552,17 +552,6 @@ ul {
   }
 
   #emotionChart {
-    display: inline-block;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-
-  #monthlyEmotionChartContainer {
-    max-width: 100%;
-    overflow-x: scroll;
-  }
-
-  #monthlyEmotionChart {
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 10px;
