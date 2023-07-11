@@ -183,7 +183,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-left: 8px;
+
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -467,7 +467,7 @@ ul {
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    cursor: pointer;
+    cursor: none;
   }
 
   #emotionChartContainer {
@@ -496,7 +496,7 @@ ul {
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    cursor: pointer;
+    cursor: none;
   }
 
   /* End Graphique */

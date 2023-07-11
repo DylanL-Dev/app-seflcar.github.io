@@ -58,10 +58,9 @@ function saveMoodAndUpdatePage(mood) {
   location.reload();
 }
 
-
-// Fonction pour calculer les données du graphique d'émotions
+// Fonction pour calculer les données du graphique d'émotions // Définir le tableau des émotions en tant que constante globale
+const emotions = ["Furieux", "Déprimé", "Indifférent", "Heureux"];
 function calculateEmotionData(entries) {
-  const emotions = ["Furieux", "Déprimé", "Indifférent", "Heureux"];
   const emotionCounts = [0, 0, 0, 0];
 
   for (const entry of entries) {
@@ -76,12 +75,11 @@ function calculateEmotionData(entries) {
     datasets: [
       {
         data: emotionCounts,
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+        backgroundColor: [" #ff6666", "	#9a9a9a", "#b3ffb3", " #ffff00"],
       },
     ],
   };
 }
-
 // Fonction pour afficher les entrées d'humeur
 function displayEntries() {
   const entriesContainer = document.getElementById("entries");
@@ -165,6 +163,8 @@ window.addEventListener("scroll", function () {
   handleNavBarDisplay();
 });
 
+
+
 // Variable pour contrôler le téléchargement en cours
 let isDownloading = false;
 
@@ -211,9 +211,9 @@ function downloadHistory() {
 
 // Fonction pour générer le contenu du fichier d'historique
 function generateHistoryContent(entries) {
-  let fileContent = "Date\t\t\tHumeur\n";
+  let fileContent = "Date\t\t\tHeure\t\tHumeur\n";
   entries.forEach((entry) => {
-    fileContent += `${entry.date}\t${entry.mood}\n`;
+    fileContent += `${entry.date} ${entry.time}\t${entry.mood}\n`;
   });
   return fileContent;
 }
