@@ -56,12 +56,16 @@
         <div class="title">
           <h2 id="moodTitle">Comment vous sentez-vous aujourd'hui ?</h2>
         </div>
-
         <section>
           <div class="container_mood">
-            <div onClick="saveMoodAndUpdatePage('Furieux')">
+            <div onclick="saveMoodAndUpdatePage('Furieux'); ">
               <div class="cirle_mood">
-                <a href="#refresh"><img src="html/assets/icone/angry.png" alt="emoji en colère" /></a>
+                <a
+                  ><img
+                    src="html/assets/icone/angry.png"
+                    alt="emoji en colère"
+                    onclick="document.getElementById('refresh').scrollIntoView();"
+                /></a>
               </div>
               <div class="nav_header">
                 <ul>
@@ -69,11 +73,13 @@
                 </ul>
               </div>
             </div>
-            <div onClick="saveMoodAndUpdatePage('Déprimé')">
+            <div onclick="saveMoodAndUpdatePage('Déprimé');">
               <div class="cirle_mood">
-                <a href="#refresh"><img
-                  src="html/assets/icone/Sad_Face_Emoji.png"
-                  alt="emoji triste"
+                <a
+                  ><img
+                    src="html/assets/icone/Sad_Face_Emoji.png"
+                    alt="emoji triste"
+                    onclick="document.getElementById('refresh').scrollIntoView();"
                 /></a>
               </div>
               <div class="nav_header">
@@ -82,11 +88,13 @@
                 </ul>
               </div>
             </div>
-            <div onClick="saveMoodAndUpdatePage('Indifférent');">
+            <div onclick="saveMoodAndUpdatePage('Indifférent');">
               <div class="cirle_mood">
-                <a href="#refresh"> <img
-                  src="html/assets/icone/Neutral_Face_Emoji.png"
-                  alt="emoji indifférent"
+                <a
+                  ><img
+                    src="html/assets/icone/Neutral_Face_Emoji.png"
+                    alt="emoji indifférent"
+                    onclick="document.getElementById('refresh').scrollIntoView();"
                 /></a>
               </div>
               <div class="nav_header">
@@ -95,11 +103,13 @@
                 </ul>
               </div>
             </div>
-            <div onClick="saveMoodAndUpdatePage('Heureux');">
+            <div onclick="saveMoodAndUpdatePage('Heureux');">
               <div class="cirle_mood">
-                <a href="#refresh"> <img
-                  src="html/assets/icone/Party_Face_Emoji.png"
-                  alt="emoji heureux"
+                <a
+                  ><img
+                    src="html/assets/icone/Party_Face_Emoji.png"
+                    alt="emoji heureux"
+                    onclick="document.getElementById('refresh').scrollIntoView();"
                 /></a>
               </div>
               <div class="nav_header">
@@ -233,9 +243,10 @@
                 <div id="emotionChartContainer">
                   <canvas id="emotionChart"></canvas>
                 </div>
-                <button id="refresh" onClick="window.location.reload();">Actiualiser mon graphique</button>
+                <button id="refresh" onClick="window.location.reload();">
+                  Actiualiser mon graphique
+                </button>
               </div>
-       
             </section>
           </div>
         </div>
