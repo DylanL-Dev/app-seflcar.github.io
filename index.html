@@ -19,7 +19,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
     <title>Self-Care</title>
   </head>
   <body>
@@ -84,6 +84,20 @@
               <div class="nav_header">
                 <ul>
                   <li>Déprimé</li>
+                </ul>
+              </div>
+            </div>
+            <div onclick="saveMoodAndUpdatePage('Fatigué');"> <!----------------------------------------------------->
+              <div class="cirle_mood">
+                <img
+                  src="html/assets/icone/yawning-face_1f971.png"
+                  alt="emoji triste"
+                  onclick="document.getElementById('refresh').scrollIntoView();"
+                />
+              </div>
+              <div class="nav_header">
+                <ul>
+                  <li>Fatigué</li>
                 </ul>
               </div>
             </div>
@@ -273,6 +287,11 @@
       </nav>
     </footer>
     <script defer src="script.js"></script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        displayEntries();
+      });
+    </script>
     <script defer>
       document.addEventListener("DOMContentLoaded", function () {
         updateEmotionChart();

@@ -21,8 +21,9 @@ function updateEmotionChart() {
 
 // Fonction pour enregistrer l'humeur sélectionnée par l'utilisateur
 function saveMood(mood) {
-  const entryDate = new Date().toLocaleDateString("fr-FR");
-  const entryTime = new Date().toLocaleTimeString("fr-FR", {
+  const now = new Date();
+  const entryDate = now.toLocaleDateString("fr-FR");
+  const entryTime = now.toLocaleTimeString("fr-FR", {
     hour: "2-digit",
     minute: "2-digit",
   });
@@ -47,6 +48,9 @@ function saveMood(mood) {
 
   localStorage.setItem("entries", JSON.stringify(entries));
 
+  localStorage.setItem("currentMood", mood);
+  localStorage.setItem("currentMoodTime", entryTime);
+
   // Mettre à jour le graphique des émotions
   updateEmotionChart();
 
@@ -63,10 +67,10 @@ function saveMoodAndUpdatePage(mood) {
   location.reload();
 }
 
-// Fonction pour calculer les données du graphique d'émotions // Définir le tableau des émotions en tant que constante globale
-const emotions = ["Furieux", "Déprimé", "Indifférent", "Heureux"];
+// Fonction pour calculer les données du graphique d'émotions
+const emotions = ["Furieux", "Déprimé", "Indifférent", "Heureux", "Fatigué"];
 function calculateEmotionData(entries) {
-  const emotionCounts = [0, 0, 0, 0];
+  const emotionCounts = [0, 0, 0, 0, 0];
 
   for (const entry of entries) {
     const index = emotions.indexOf(entry.mood);
@@ -80,11 +84,12 @@ function calculateEmotionData(entries) {
     datasets: [
       {
         data: emotionCounts,
-        backgroundColor: [" #ff6666", "	#9a9a9a", "#b3ffb3", " #ffff00"],
+        backgroundColor: ["#ff0000", "#1a1a1a", "#f5f5dc", "#ffff00", "#ef58ef"],
       },
     ],
   };
 }
+
 // Fonction pour afficher les entrées d'humeur
 function displayEntries() {
   const entriesContainer = document.getElementById("entries");
@@ -116,6 +121,15 @@ function displayEntries() {
  * @param {string} mood - L'humeur enregistrée
  * @returns {string} Le code HTML de l'entrée
  */
+
+// Fonction pour obtenir l'heure actuelle au format HH:mm
+function getCurrentTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  return `${hours}:${minutes}`;
+}
+// Fonction pour générer le code HTML d'une entrée d'humeur
 function createEntryHTML(date, mood) {
   const today = new Date().toLocaleDateString();
   const entryDate = date === today ? "Aujourd'hui<br>" : date;
@@ -179,21 +193,15 @@ downloadBtn.addEventListener("click", function () {
 
 // Fonction pour télécharger l'historique d'humeur
 function downloadHistory() {
-  // Vérifier si un téléchargement est déjà en cours
-  if (isDownloading) {
-    return;
-  }
-
-  // Définir la variable de contrôle sur true
-  isDownloading = true;
-
-  // Désactiver le bouton de téléchargement
-  downloadBtn.disabled = true;
-
   const entries = JSON.parse(localStorage.getItem("entries")) || [];
   const patientName = localStorage.getItem("patientFullName");
   const currentDate = new Date().toISOString().split("T")[0];
-  const fileName = `historique_humeur_${patientName}_${currentDate}.txt`;
+  const fileName = `historique_humeur_${patientName}_${currentDate}.html`;
+
+  // Ajouter le nom du patient à chaque entrée
+  entries.forEach((entry) => {
+    entry.name = patientName;
+  });
 
   // Création du contenu du fichier
   const fileContent = generateHistoryContent(entries);
@@ -204,20 +212,16 @@ function downloadHistory() {
   downloadLink.href = URL.createObjectURL(fileBlob);
   downloadLink.download = fileName;
   downloadLink.click();
-
-  // Réactiver le bouton de téléchargement après un court délai
-  setTimeout(() => {
-    downloadBtn.disabled = false;
-    isDownloading = false; // Réinitialiser la variable de contrôle
-  }, 1000);
 }
 
 // Fonction pour générer le contenu du fichier d'historique
 function generateHistoryContent(entries) {
-  let fileContent = "Date\t\t\tHeure\t\tHumeur\n";
+  let fileContent =
+    "<table><tr><th>Date</th><th>Humeur</th><th>Nom du patient</th></tr>";
   entries.forEach((entry) => {
-    fileContent += `${entry.date}\t${entry.time}\t${entry.mood}\n`;
+    fileContent += `<tr><td>${entry.date}</td><td>${entry.mood}</td><td>${entry.name}</td></tr>`;
   });
+  fileContent += "</table>";
   return fileContent;
 }
 
