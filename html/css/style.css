@@ -592,7 +592,7 @@ ul {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 100%;
+    width: 80%;
     background-color: #f2f2f2;
     border-radius: 5px;
   }
@@ -618,6 +618,7 @@ ul {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    color: #299272;
   }
 
   button[type="submit"] {
