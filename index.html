@@ -24,40 +24,54 @@
   </head>
   <body>
     <header>
-     <!-- Profil patient -->
-<section>
-  <div id="container_profil">
-    <div id="profilePictureContainer">
-      <label for="profilePictureInput" id="uploadPictureBtn">
-        <img
-          id="profilePicture"
-          src="html/assets/icone/add-user.png"
-          alt="photo de profil"
-        />
-      </label>
-      <input type="file" id="profilePictureInput" accept="image/*" />
-    </div>
-    <div class="container_user">
-      <h1 class="name"></h1>
-      <p class="category">Patient</p>
-    </div>
-    <div class="container_notification clignote" id="cloche">
-      <i class="fa-solid fa-bell"></i>
-      <div class="bg_bell"></div>
-      <div class="min_cercle"></div>
-    </div>
-    <div class="notification-overlay" id="notificationOverlay">
-      <div class="notification-bubble" id="notificationBubble">
-        <p>
-          Avez-vous pensé à enregistrer votre humeur aujourd'hui ? Vous
-          aviez 24h pour changer votre état émotionnel
-        </p>
-        <span class="close-button">&times;</span>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End Profil patient -->
+      <!-- Profil patient -->
+      <section>
+        <div id="container_profil">
+          <div id="profilePictureContainer">
+            <label for="profilePictureInput" id="uploadPictureBtn">
+              <img
+                id="profilePicture"
+                src="html/assets/icone/add-user.png"
+                alt="photo de profil"
+              />
+            </label>
+            <input type="file" id="profilePictureInput" accept="image/*" />
+          </div>
+          <div class="container_user">
+            <h1 class="name"></h1>
+            <p class="category">Patient</p>
+          </div>
+          <div class="container_notification clignote" id="cloche">
+            <i class="fa-solid fa-bell"></i>
+            <div class="bg_bell"></div>
+            <div class="min_cercle"></div>
+          </div>
+          <div class="notification-overlay" id="notificationOverlay">
+            <div class="notification-bubble" id="notificationBubble">
+              <p>
+                Bonjour ! Vous êtes sur le point d'enregistrer votre état
+                émotionnel actuel. Vous pouvez le modifier à tout moment de la
+                journée. À partir de 00h00, il sera enregistré localement. Vous
+                aurez un suivi de vos émotions sur une période d'un mois grâce à
+                notre graphique qui se met à jour quotidiennement. Cela vous
+                permettra de visualiser votre taux émotionnel au quotidien. Nous
+                tenons à vous informer que nous ne collectons aucune donnée
+                personnelle. Toutes vos informations sont sécurisées dans le
+                <a
+                  href="https://www.journaldunet.com/web-tech/developpeur/1100751-web-storage-stockage-des-donnees-dans-le-navigateur/"
+                  ><span class="lien">stockage local</span></a
+                >
+                de votre navigateur. Si vous supprimez l'historique ou essayez
+                d'utiliser plusieurs profils depuis un périphérique et
+                navigateur différent, les données seront réinitialisées par
+                défaut.
+              </p>
+              <span class="close-button">&times;</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Profil patient -->
 
       <!-- Mood -->
       <section>

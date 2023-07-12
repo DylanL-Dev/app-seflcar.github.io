@@ -160,14 +160,14 @@ ul {
     transform: translate(-50%, -50%);
     width: 250px;
     background-color: #314e44;
-    color: #f2f2f2;
+    color: #f2f2f2dc;
     border-radius: 10px;
     padding: 10px;
     text-align: center;
   }
 
   .notification-bubble p {
-    margin: 0;
+    margin: 6px;
   }
 
   .close-button {
@@ -177,6 +177,11 @@ ul {
     cursor: pointer;
     color: #ffffff;
     font-size: 20px;
+  }
+
+  .lien{
+    font-weight: bold;
+    color: #f2f2f2;
   }
 
   /* End bell notification */
