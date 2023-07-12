@@ -21,7 +21,11 @@ function updateEmotionChart() {
 
 // Fonction pour enregistrer l'humeur sélectionnée par l'utilisateur
 function saveMood(mood) {
-  const entryDate = new Date().toLocaleDateString();
+  const entryDate = new Date().toLocaleDateString("fr-FR");
+  const entryTime = new Date().toLocaleTimeString("fr-FR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   // Rechercher une entrée existante avec la même date
   const entries = JSON.parse(localStorage.getItem("entries")) || [];
@@ -36,6 +40,7 @@ function saveMood(mood) {
     // Ajouter une nouvelle entrée
     entries.push({
       date: entryDate,
+      time: entryTime,
       mood: mood,
     });
   }
@@ -163,8 +168,6 @@ window.addEventListener("scroll", function () {
   handleNavBarDisplay();
 });
 
-
-
 // Variable pour contrôler le téléchargement en cours
 let isDownloading = false;
 
@@ -213,7 +216,7 @@ function downloadHistory() {
 function generateHistoryContent(entries) {
   let fileContent = "Date\t\t\tHeure\t\tHumeur\n";
   entries.forEach((entry) => {
-    fileContent += `${entry.date} ${entry.time}\t${entry.mood}\n`;
+    fileContent += `${entry.date}\t${entry.time}\t${entry.mood}\n`;
   });
   return fileContent;
 }
