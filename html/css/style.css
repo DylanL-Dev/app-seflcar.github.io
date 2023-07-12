@@ -62,7 +62,24 @@ ul {
       transform: scale(1);
     }
   }
+  /*ajout de photo */
+  #profilePictureContainer {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
+  #profilePicture {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+
+
+
+  #profilePictureInput {
+    display: none;
+  }
+  /* END photo profil*/
   /* Styles pour nom et categorie category */
   .name {
     font-size: 18px;
@@ -562,5 +579,6 @@ ul {
       transform: translateY(0);
     }
   }
+
   /* End Nav footer */
 }

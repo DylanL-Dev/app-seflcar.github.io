@@ -84,7 +84,13 @@ function calculateEmotionData(entries) {
     datasets: [
       {
         data: emotionCounts,
-        backgroundColor: ["#ff0000", "#1a1a1a", "#f5f5dc", "#ffff00", "#ef58ef"],
+        backgroundColor: [
+          "#ff0000",
+          "#1a1a1a",
+          "#f5f5dc",
+          "#ffff00",
+          "#ef58ef",
+        ],
       },
     ],
   };
@@ -375,3 +381,43 @@ const midnight = new Date(
 );
 const timeUntilMidnight = midnight.getTime() - now.getTime();
 setTimeout(saveDailyMood, timeUntilMidnight);
+
+// Récupérer les éléments du DOM
+const profilePicture = document.getElementById("profilePicture");
+const profilePictureInput = document.getElementById("profilePictureInput");
+
+// Ajouter un gestionnaire d'événement au champ de saisie de fichier
+profilePictureInput.addEventListener("change", function (event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const imageUrl = e.target.result;
+      profilePicture.src = imageUrl;
+      // Vous pouvez enregistrer l'URL de l'image dans le stockage local ou l'envoyer au serveur pour le traitement ultérieur.
+      localStorage.setItem("profilePictureUrl", imageUrl);
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Chargement de l'image de profil depuis le stockage local lors du chargement de la page
+window.addEventListener("DOMContentLoaded", function () {
+  const profilePictureUrl = localStorage.getItem("profilePictureUrl");
+
+  if (profilePictureUrl) {
+    // Affichage de l'image dans l'élément img
+    profilePicture.src = profilePictureUrl;
+  }
+});
+
+// Gestionnaire d'événement avant la fermeture de la fenêtre
+window.addEventListener("beforeunload", function () {
+  // Récupération de l'URL de la photo de profil
+  const profilePictureUrl = localStorage.getItem("profilePictureUrl");
+
+  if (profilePictureUrl) {
+    // Révocation de l'URL pour libérer les ressources du navigateur
+    URL.revokeObjectURL(profilePictureUrl);
+  }
+});
