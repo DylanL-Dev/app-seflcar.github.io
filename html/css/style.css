@@ -74,8 +74,6 @@ ul {
     border-radius: 50%;
   }
 
-
-
   #profilePictureInput {
     display: none;
   }
@@ -179,7 +177,7 @@ ul {
     font-size: 20px;
   }
 
-  .lien{
+  .lien {
     font-weight: bold;
     color: #f2f2f2;
   }
@@ -586,4 +584,50 @@ ul {
   }
 
   /* End Nav footer */
+
+  /* Style pour le formulaire de connexion en version mobile */
+  /* Style pour centrer le formulaire de connexion au milieu de la page */
+  #loginSection {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #299272;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
 }

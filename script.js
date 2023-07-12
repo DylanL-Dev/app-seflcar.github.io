@@ -231,40 +231,55 @@ function generateHistoryContent(entries) {
   return fileContent;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fonction pour initialiser l'application
 function initializeApp() {
-  // Vérifier si le patient a déjà renseigné son nom complet
-  let patientFullName = localStorage.getItem("patientFullName");
+  const loginForm = document.getElementById("loginForm");
+  loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  if (!patientFullName) {
-    let name = "";
-    while (name.trim().length === 0) {
-      const confirmed = confirm(
-        "Veuillez saisir votre nom et prénom complet :"
-      );
-      if (confirmed) {
-        name = prompt("Nom et prénom complet :");
-      } else {
-        // L'utilisateur a refusé la saisie du nom et prénom, vous pouvez ajouter une logique de gestion de cette situation.
-        return;
-      }
-    }
-    localStorage.setItem("patientFullName", name);
-    patientFullName = name;
-  }
+    const username = document.getElementById("username").value;
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("username", username);
 
-  // Afficher le nom complet du patient
-  const patientNameElement = document.querySelector(".name");
-  patientNameElement.textContent = patientFullName;
-
-  // Afficher les entrées d'humeur
-  displayEntries();
+    window.location.href = "portail.html";
+  });
+}
+// Fonction pour initialiser l'application du portail patient
+function initializePatientApp() {
+  // Appel de la fonction pour afficher le nom d'utilisateur
+  displayUsername();
 }
 
-// Gestionnaire d'événement au chargement du document
+// Fonction pour afficher le nom d'utilisateur dans le portail du patient
+function displayUsername() {
+  const username = localStorage.getItem("username");
+  if (username) {
+    const nameElement = document.querySelector(".name");
+    nameElement.textContent = username;
+  }
+}
+
+// Appel de la fonction d'initialisation du portail patient
+document.addEventListener("DOMContentLoaded", function () {
+  initializePatientApp();
+});
+
+// Fonction pour afficher le nom d'utilisateur dans le portail du patient
+function displayUsername() {
+  const username = localStorage.getItem("username");
+  if (username) {
+    const nameElement = document.querySelector(".name");
+    nameElement.textContent = username;
+  }
+}
+
+// Appel des fonctions d'initialisation
 document.addEventListener("DOMContentLoaded", function () {
   initializeApp();
+  displayUsername();
 });
+//////////////////////////////////////////////////////////////////////////////////////
 
 // Gestion de la notification cloche
 const cloche = document.getElementById("cloche");
@@ -381,7 +396,7 @@ const midnight = new Date(
 );
 const timeUntilMidnight = midnight.getTime() - now.getTime();
 setTimeout(saveDailyMood, timeUntilMidnight);
-
+// Photo de profil
 // Récupérer les éléments du DOM
 const profilePicture = document.getElementById("profilePicture");
 const profilePictureInput = document.getElementById("profilePictureInput");
@@ -421,3 +436,4 @@ window.addEventListener("beforeunload", function () {
     URL.revokeObjectURL(profilePictureUrl);
   }
 });
+// end Photo de profil
