@@ -44,7 +44,6 @@ ul {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    object-fit: cover;
     animation: picture 1s ease 0s 1 normal forwards;
   }
 
@@ -585,15 +584,43 @@ ul {
 
   /* End Nav footer */
 
-  /* Style pour le formulaire de connexion en version mobile */
+  .background_login {
+    background-color: #ffffff;
+  }
+
+  .background_img {
+    width: 100%;
+    height: 300px;
+    border-radius: 0 0 100px 100px;
+    overflow: hidden;
+  }
+
+  .background_img img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .logo_login {
+    position: absolute;
+    top: 230px;
+    right: 32%;
+  }
+
+  .logo_login img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+
   /* Style pour centrer le formulaire de connexion au milieu de la page */
   #loginSection {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 75px;
+    width: 100%;
     border-radius: 5px;
   }
 
@@ -603,6 +630,10 @@ ul {
     margin-bottom: 20px;
   }
 
+  #loginForm {
+    width: 70%;
+    z-index: 1;
+  }
   .form-group {
     margin-bottom: 20px;
   }
@@ -610,25 +641,28 @@ ul {
   label {
     display: block;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   input[type="text"] {
     width: 100%;
+    height: 50px;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 25px;
     color: #299272;
   }
 
   button[type="submit"] {
     display: block;
     width: 100%;
+    height: 50px;
     padding: 10px;
+    font-weight: bold;
     background-color: #299272;
     color: #fff;
     border: none;
-    border-radius: 3px;
+    border-radius: 25px;
     cursor: pointer;
   }
 }
