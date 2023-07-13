@@ -654,6 +654,21 @@ ul {
     color: #299272;
   }
 
+  ::placeholder {
+    font-size: 14px;
+  }
+
+  .btn_login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn_login i {
+    position: absolute;
+    margin-left: 30%;
+    color: #fff;
+  }
+
   button[type="submit"] {
     display: block;
     width: 100%;
