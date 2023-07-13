@@ -649,6 +649,7 @@ ul {
     height: 50px;
     padding: 10px;
     border: 1px solid #ccc;
+    font-weight: bold;
     border-radius: 25px;
     color: #299272;
   }
