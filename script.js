@@ -220,7 +220,6 @@ function downloadHistory() {
   downloadLink.click();
 }
 
-
 function generateHistoryContent(entries) {
   const patientName = localStorage.getItem("patientFullName"); // Récupérer le nom complet du patient
   let fileContent = `<table><tr><th>Date</th><th>Humeur</th><th>Nom du patient</th></tr>`;
@@ -232,8 +231,6 @@ function generateHistoryContent(entries) {
   fileContent += "</table>";
   return fileContent;
 }
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fonction pour initialiser l'application
@@ -258,32 +255,19 @@ function initializePatientApp() {
 
 // Fonction pour afficher le nom d'utilisateur dans le portail du patient
 function displayUsername() {
-  const username = localStorage.getItem("username");
-  if (username) {
+  const fullName = localStorage.getItem("patientFullName");
+  if (fullName) {
     const nameElement = document.querySelector(".name");
-    nameElement.textContent = username;
-  }
-}
-
-// Appel de la fonction d'initialisation du portail patient
-document.addEventListener("DOMContentLoaded", function () {
-  initializePatientApp();
-});
-
-// Fonction pour afficher le nom d'utilisateur dans le portail du patient
-function displayUsername() {
-  const username = localStorage.getItem("username");
-  if (username) {
-    const nameElement = document.querySelector(".name");
-    nameElement.textContent = username;
+    nameElement.textContent = fullName;
   }
 }
 
 // Appel des fonctions d'initialisation
 document.addEventListener("DOMContentLoaded", function () {
   initializeApp();
-  displayUsername();
+  initializePatientApp();
 });
+
 //////////////////////////////////////////////////////////////////////////////////////
 
 // Gestion de la notification cloche
@@ -443,3 +427,27 @@ window.addEventListener("beforeunload", function () {
 });
 // end Photo de profil
 
+// Fonction pour réinitialiser les données après un mois
+function resetDataAfterMonth() {
+  const entries = JSON.parse(localStorage.getItem("entries")) || [];
+  const currentDate = new Date();
+
+  // Récupérer la date d'il y a un mois
+  const oneMonthAgo = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth() - 1,
+    currentDate.getDate()
+  );
+
+  // Filtrer les entrées antérieures à un mois
+  const filteredEntries = entries.filter((entry) => {
+    const entryDate = new Date(entry.date);
+    return entryDate >= oneMonthAgo;
+  });
+
+  // Enregistrer les entrées filtrées dans le stockage local
+  localStorage.setItem("entries", JSON.stringify(filteredEntries));
+}
+
+// Appel de la fonction pour réinitialiser les données après un mois
+resetDataAfterMonth();
