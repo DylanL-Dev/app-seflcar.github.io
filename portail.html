@@ -279,6 +279,12 @@
                 <p>30 min</p>
               </div>
             </div>
+            <section>
+              <section>
+                <div id="qrcode"></div>
+              </section>
+            </section>
+
             <!-- Section de suivi de l'état émotionnel -->
             <section>
               <div class="container_humeur">
@@ -311,7 +317,7 @@
                 <i class="fa-solid fa-plus"></i>
               </a>
             </div>
-            <a href="#" class="icon_link"
+            <a href="#emotionChartContainer" class="icon_link"
               ><i class="fa-solid fa-chart-pie"></i
             ></a>
             <a href="#" class="icon_link"><i class="fa-solid fa-gear"></i></a>
@@ -321,6 +327,8 @@
     </footer>
 
     <script defer src="script.js"></script>
+    <script src="qrcode.js"></script>
+
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
     <script defer>
       window.addEventListener("load", function () {

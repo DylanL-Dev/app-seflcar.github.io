@@ -220,16 +220,20 @@ function downloadHistory() {
   downloadLink.click();
 }
 
-// Fonction pour générer le contenu du fichier d'historique
+
 function generateHistoryContent(entries) {
-  let fileContent =
-    "<table><tr><th>Date</th><th>Humeur</th></tr>";
+  const patientName = localStorage.getItem("patientFullName"); // Récupérer le nom complet du patient
+  let fileContent = `<table><tr><th>Date</th><th>Humeur</th><th>Nom du patient</th></tr>`;
+
   entries.forEach((entry) => {
-    fileContent += `<tr><td>${entry.date}</td><td>${entry.mood}</td><td>${entry.name}</td></tr>`;
+    fileContent += `<tr><td>${entry.date}</td><td>${entry.mood}</td><td>${patientName}</td></tr>`;
   });
+
   fileContent += "</table>";
   return fileContent;
 }
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fonction pour initialiser l'application
@@ -238,13 +242,14 @@ function initializeApp() {
   loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const username = document.getElementById("username").value;
+    const fullName = document.getElementById("fullName").value; // Récupérer le nom complet du patient
     localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("username", username);
+    localStorage.setItem("patientFullName", fullName); // Enregistrer le nom complet dans le stockage local
 
     window.location.href = "portail.html";
   });
 }
+
 // Fonction pour initialiser l'application du portail patient
 function initializePatientApp() {
   // Appel de la fonction pour afficher le nom d'utilisateur
