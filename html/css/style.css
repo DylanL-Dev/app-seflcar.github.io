@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 
 img {
@@ -162,10 +162,8 @@ ul {
     padding: 25px 25px;
   }
 
-
   .notification-bubble ol li {
     margin: 10px;
-    
   }
 
   .close-button {
@@ -196,14 +194,14 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-direction: row;
     padding-top: 20px;
   }
 
   .cirle_mood {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-
+    justify-content: center;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -222,6 +220,12 @@ ul {
     font-weight: 500;
     opacity: 0.7;
     padding-top: 15px;
+  }
+
+  #btn_mood {
+    border: none;
+    background-color: transparent;
+    cursor: none;
   }
 
   /* End Mood */
@@ -372,6 +376,7 @@ ul {
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 20px;
+    
   }
 
   .cards_self_car_green {
@@ -380,6 +385,7 @@ ul {
     background-color: #7cb37ca8;
     border-radius: 20px;
     margin: 8px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
 
   .bg_white {
@@ -396,6 +402,7 @@ ul {
 
   .cards_self_car_green img {
     width: 40%;
+    
   }
 
   .title_self_car {
@@ -425,6 +432,7 @@ ul {
     background-color: #b3ffb3;
     border-radius: 20px;
     margin: 8px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
 
   .cards_self_car_green_Lightness img {
@@ -437,6 +445,7 @@ ul {
     background-color: #9db9e4;
     border-radius: 20px;
     margin: 8px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
 
   .cards_self_car_blue img {
@@ -453,7 +462,8 @@ ul {
     align-items: center;
     flex-direction: column;
     padding: 10px;
-    border-radius: 35px 35px 0 0;
+    margin-top: 30px;
+    border-radius: 35px;
     background-color: #1c2d27;
     flex-wrap: nowrap;
   }
@@ -508,17 +518,6 @@ ul {
     text-align: center;
   }
 
-  #refresh {
-    margin-top: 15px;
-    background-color: #299272;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: none;
-  }
-
   /* End Graphique */
 
   /* Nav footer */
@@ -527,6 +526,7 @@ ul {
     height: auto;
     width: 100%;
     padding-top: 50px;
+    
   }
 
   .navigation {
@@ -535,7 +535,6 @@ ul {
     align-items: center;
     justify-content: space-around;
     font-size: 20px;
-    position: relativefic;
   }
 
   .cercle_nav {
@@ -547,7 +546,7 @@ ul {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    border: #f2f2f2 solid 10px;
+    border: #f5f5f5 solid 10px;
     background-color: #299272;
   }
 
@@ -555,7 +554,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #f2f2f2;
+    color: #f5f5f5;
     font-size: 25px;
   }
 
@@ -680,6 +679,6 @@ ul {
     color: #fff;
     border: none;
     border-radius: 25px;
-    cursor: pointer;
+    cursor: none;
   }
 }

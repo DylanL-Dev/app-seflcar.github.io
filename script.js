@@ -223,7 +223,7 @@ function downloadHistory() {
 // Fonction pour générer le contenu du fichier d'historique
 function generateHistoryContent(entries) {
   let fileContent =
-    "<table><tr><th>Date</th><th>Humeur</th><th>Nom du patient</th></tr>";
+    "<table><tr><th>Date</th><th>Humeur</th></tr>";
   entries.forEach((entry) => {
     fileContent += `<tr><td>${entry.date}</td><td>${entry.mood}</td><td>${entry.name}</td></tr>`;
   });
