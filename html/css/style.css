@@ -30,6 +30,11 @@ ul {
   list-style-type: none;
 }
 
+
+i{
+  cursor: none;
+}
+
 /* Profil & notification */
 @media screen and (max-width: 768px) {
   /* Styles for the profile section */
@@ -376,7 +381,6 @@ ul {
     justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 20px;
-    
   }
 
   .cards_self_car_green {
@@ -402,7 +406,6 @@ ul {
 
   .cards_self_car_green img {
     width: 40%;
-    
   }
 
   .title_self_car {
@@ -526,8 +529,8 @@ ul {
     height: auto;
     width: 100%;
     padding-top: 50px;
-    
   }
+  
 
   .navigation {
     width: 100%;
@@ -558,8 +561,8 @@ ul {
     font-size: 25px;
   }
 
-  .fa-comment {
-    padding-right: 60px;
+  .fa-qrcode {
+    padding-right:70px;
   }
 
   #nav_footer {
@@ -681,4 +684,89 @@ ul {
     border-radius: 25px;
     cursor: none;
   }
+
+
+  .back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-top: 10px;
+    background-color: #f2f2f2;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #555555;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .back-button i {
+    font-size: 20px;
+  }
+  
+  .logo_qrcode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo_qrcode img {
+    width: 40%;
+  }
+  
+  .text_qrcode {
+    text-align: center;
+    margin: 20px auto;
+    width: 95%;
+  }
+  
+  .text_qrcode h1 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .text_qrcode p {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.4;
+  }
+  
+
+  .btn_qrcode h1 {
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    color: #f2f2f2;
+  }
+  
+  #qrcodeCanvas {
+    position: absolute;
+    top: 47%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    animation-name: qrCode;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes qrCode {
+    0% {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  
 }

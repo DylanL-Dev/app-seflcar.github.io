@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- En-tête -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="html/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="html/css/node_modules/normalize.css/normalize.css"
+    />
+    <script
+      defer
+      src="https://kit.fontawesome.com/79857fa36d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Self-Care</title>
+  </head>
+  <body>
+    <header>
+      <a href="portail.html" class="back-button">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+
+      <section>
+        <div class="logo_qrcode">
+          <img
+            src="html/assets/logo/f73fde586b3b5257a7d00d0d8216e288.webp"
+            alt="logo"
+          />
+        </div>
+        <div class="text_qrcode">
+          <h1>
+            Le QR code facilite la communication entre praticiens et patients,
+            leur permettant de partager facilement des informations pertinentes
+            pour des soins adaptés et personnalisés.
+            <p>
+              Il favorise ainsi une collaboration efficace et une meilleure
+              compréhension mutuelle.
+            </p>
+          </h1>
+        </div>
+      </section>
+    </header>
+    <main>
+      <section>
+        <div class="container_qrcode">
+          <canvas id="qrcodeCanvas"></canvas>
+        </div>
+      </section>
+    </main>
+    <script defer src="qrcode.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"
+    ></script>
+    <script defer>
+      window.addEventListener("load", function () {
+        document.getElementById("nav_footer").scrollIntoView();
+      });
+    </script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        displayEntries();
+        updateEmotionChart();
+      });
+    </script>
+  </body>
+</html>

@@ -279,11 +279,6 @@
                 <p>30 min</p>
               </div>
             </div>
-            <section>
-              <section>
-                <div id="qrcode"></div>
-              </section>
-            </section>
 
             <!-- Section de suivi de l'état émotionnel -->
             <section>
@@ -309,9 +304,7 @@
             <a href="#container_profil" class="icon_link"
               ><i class="fa-solid fa-house"></i
             ></a>
-            <a href="#" class="icon_link"
-              ><i class="fa-solid fa-comment"></i
-            ></a>
+            <a href="qrcode.html" class="icon_link"><i class="fa-solid fa-qrcode"></i></a>
             <div class="cercle_nav">
               <a href="#" class="icon_link">
                 <i class="fa-solid fa-plus"></i>
@@ -325,11 +318,11 @@
         </div>
       </nav>
     </footer>
-
     <script defer src="script.js"></script>
-    <script src="qrcode.js"></script>
-
+    <script defer src="qrcode.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
     <script defer>
       window.addEventListener("load", function () {
         document.getElementById("nav_footer").scrollIntoView();
