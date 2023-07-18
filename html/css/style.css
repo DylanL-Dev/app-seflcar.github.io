@@ -683,6 +683,12 @@ i {
     cursor: none;
   }
 
+  .container_qrcode_info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .back-button {
     display: flex;
     align-items: center;
@@ -700,6 +706,19 @@ i {
   }
 
   .back-button i {
+    font-size: 20px;
+  }
+
+  .info_qrcode {
+    margin-right: 20px;
+    margin-top: 10px;
+    border-radius: 50%;
+    color: #555555;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .info_qrcode i {
     font-size: 20px;
   }
 
@@ -758,5 +777,11 @@ i {
       opacity: 1;
       transform: scale(1);
     }
+  }
+
+  .container_qrcode_info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }

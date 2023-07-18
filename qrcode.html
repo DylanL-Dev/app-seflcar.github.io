@@ -15,14 +15,51 @@
       src="https://kit.fontawesome.com/79857fa36d.js"
       crossorigin="anonymous"
     ></script>
-
-    <title>Self-Care</title>
+    <title>QR Code - Historique des humeurs</title>
   </head>
   <body>
     <header>
-      <a href="portail.html" class="back-button">
-        <i class="fa-solid fa-arrow-left"></i>
-      </a>
+      <div class="container_qrcode_info">
+        <a href="portail.html" class="back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <a href="#" class="info_qrcode">
+          <i class="fa-solid fa-circle-question"></i>
+        </a>
+        <!-- Overlay de notification -->
+        <div class="notification-overlay" id="notificationOverlay">
+          <div class="notification-bubble" id="notificationBubble">
+            <p>Voici la façon dont il fonctionne :</p>
+            <ol>
+              <li>
+                Ouvrez une application de scanner QR code sur votre téléphone
+              </li>
+              <li>
+                Lancez l'application de scanner QR code et autorisez l'accès à
+                la caméra si nécessaire.
+              </li>
+              <li>
+                Dirigez la caméra vers le QR code imprimé ou affiché à l'écran.
+              </li>
+              <li>
+                Assurez-vous que le QR code est clairement visible dans le cadre
+                de la caméra.
+              </li>
+              <li>
+                L'application ou le lecteur de code QR détectera automatiquement
+                le QR code et affichera les informations qu'il contient.
+              </li>
+              <li>
+                Les informations affichées peuvent varier en fonction du contenu
+                du QR code. Dans votre cas, le QR code contient des informations
+                sur l'état émotionnel, l'enregistrement local des données, le
+                suivi des émotions sur un mois, ect.
+              </li>
+            </ol>
+            <span class="close-button">&times;</span>
+          </div>
+        </div>
+      </div>
 
       <section>
         <div class="logo_qrcode">
@@ -50,6 +87,12 @@
           <canvas id="qrcodeCanvas"></canvas>
         </div>
       </section>
+
+      <section>
+        <div class="container_patient_moods">
+          <ul id="patientList"></ul>
+        </div>
+      </section>
     </main>
     <script defer src="qrcode.js"></script>
     <script
@@ -65,6 +108,27 @@
       document.addEventListener("DOMContentLoaded", function () {
         displayEntries();
         updateEmotionChart();
+      });
+    </script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        const infoQrCode = document.querySelector(".info_qrcode");
+        const notificationOverlay = document.getElementById(
+          "notificationOverlay"
+        );
+        const notificationBubble =
+          document.getElementById("notificationBubble");
+        const closeButton = document.querySelector(".close-button");
+
+        // Afficher la bulle de notification lorsque vous cliquez sur l'icône
+        infoQrCode.addEventListener("click", function () {
+          notificationOverlay.style.display = "block";
+        });
+
+        // Masquer la bulle de notification lorsque vous cliquez sur le bouton de fermeture
+        closeButton.addEventListener("click", function () {
+          notificationOverlay.style.display = "none";
+        });
       });
     </script>
   </body>
