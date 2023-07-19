@@ -30,19 +30,18 @@ ul {
   list-style-type: none;
 }
 
-i {
-  cursor: none;
-}
-
 /* Profil & notification */
 @media screen and (max-width: 768px) {
+  i {
+    cursor: none;
+  }
+
   /* Styles for the profile section */
   #container_profil {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 30px;
-
   }
 
   #container_profil img {
@@ -862,10 +861,4 @@ i {
       transform: rotate(0) scale(1);
     }
   }
-
-
-
-
-
-
 }
