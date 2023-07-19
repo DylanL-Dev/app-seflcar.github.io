@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const qrCode = new QRCode(qrcodeElement, {
     text: escapedFileContent,
-    width: 128,
-    height: 128,
+    width: 250,
+    height: 250,
   });
 
   displayPatientMoods();
