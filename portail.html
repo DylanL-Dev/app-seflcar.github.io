@@ -301,7 +301,7 @@
                 <i class="fa-solid fa-plus"></i>
               </a>
             </div>
-            <a href="html/graphique.html"  class="icon_link"
+            <a href="html/graphique.html" class="icon_link"
               ><i class="fa-solid fa-chart-pie"></i
             ></a>
             <a href="#" class="icon_link"><i class="fa-solid fa-gear"></i></a>
@@ -390,6 +390,39 @@
       const closeButton = document.querySelector(".close-button");
       closeButton.addEventListener("click", function () {
         closeNotification();
+      });
+
+      // Fonction pour gérer le remplacement de l'icône lors du défilement
+      function handleIconScroll() {
+        const barsIcon = document.getElementById("bars");
+        const chevronIcon = document.getElementById("chevron");
+        const scrollThreshold = 300;
+
+        if (document.documentElement.scrollTop > scrollThreshold) {
+          barsIcon.style.display = "none";
+          chevronIcon.style.display = "flex";
+        } else {
+          barsIcon.style.display = "flex";
+          chevronIcon.style.display = "none";
+        }
+      }
+
+      // Fonction pour gérer l'affichage de la barre de navigation
+      function handleNavBarDisplay() {
+        const navFooter = document.getElementById("nav_footer");
+        const scrollThreshold = 250;
+
+        if (document.documentElement.scrollTop < scrollThreshold) {
+          navFooter.style.display = "none";
+        } else {
+          navFooter.style.display = "flex";
+        }
+      }
+
+      // Événement de défilement pour exécuter les fonctions appropriées
+      window.addEventListener("scroll", function () {
+        handleIconScroll();
+        handleNavBarDisplay();
       });
     </script>
   </body>

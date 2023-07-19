@@ -155,38 +155,7 @@ function createEntryHTML(date, mood) {
   return entryHTML;
 }
 
-// Fonction pour gérer le remplacement de l'icône lors du défilement
-function handleIconScroll() {
-  const barsIcon = document.getElementById("bars");
-  const chevronIcon = document.getElementById("chevron");
-  const scrollThreshold = 200;
 
-  if (document.documentElement.scrollTop > scrollThreshold) {
-    barsIcon.style.display = "none";
-    chevronIcon.style.display = "flex";
-  } else {
-    barsIcon.style.display = "flex";
-    chevronIcon.style.display = "none";
-  }
-}
-
-// Fonction pour gérer l'affichage de la barre de navigation
-function handleNavBarDisplay() {
-  const navFooter = document.getElementById("nav_footer");
-  const scrollThreshold = 200;
-
-  if (document.documentElement.scrollTop < scrollThreshold) {
-    navFooter.style.display = "none";
-  } else {
-    navFooter.style.display = "flex";
-  }
-}
-
-// Événement de défilement pour exécuter les fonctions appropriées
-window.addEventListener("scroll", function () {
-  handleIconScroll();
-  handleNavBarDisplay();
-});
 
 // Variable pour contrôler le téléchargement en cours
 let isDownloading = false;
