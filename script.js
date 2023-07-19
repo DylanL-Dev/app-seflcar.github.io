@@ -274,50 +274,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-// Gestion de la notification cloche
-const cloche = document.getElementById("cloche");
-const notificationOverlay = document.getElementById("notificationOverlay");
-
-// Vérifie si la notification a déjà été affichée aujourd'hui
-const isNotificationDisplayed = localStorage.getItem("notificationDisplayed");
-
-// Affiche la notification si elle n'a pas été affichée aujourd'hui
-if (!isNotificationDisplayed) {
-  displayNotification();
-}
-
-// Fonction pour afficher la notification
-function displayNotification() {
-  notificationOverlay.style.display = "block";
-  cloche.classList.add("clignote");
-
-  // Enregistre que la notification a été affichée aujourd'hui
-  localStorage.setItem("notificationDisplayed", true);
-}
-
-// Ferme la notification
-function closeNotification() {
-  notificationOverlay.style.display = "none";
-  cloche.classList.remove("clignote");
-}
-
-// Gère le clic sur la cloche
-cloche.addEventListener("click", function (event) {
-  event.stopPropagation();
-
-  if (notificationOverlay.style.display === "none") {
-    displayNotification();
-  } else {
-    closeNotification();
-  }
-});
-
-// Fermeture notification avec la crois
-const closeButton = document.querySelector(".close-button");
-closeButton.addEventListener("click", function () {
-  notificationOverlay.style.display = "none";
-});
-
 // Fonction pour afficher toutes les entrées d'humeur enregistrées
 function displayEntries() {
   const entriesContainer = document.getElementById("entries");

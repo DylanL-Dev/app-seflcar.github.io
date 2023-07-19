@@ -40,6 +40,7 @@
               <p class="category">Patient</p>
             </div>
           </section>
+
           <div class="container_notification clignote" id="cloche">
             <i class="fa-solid fa-bell"></i>
             <div class="bg_bell"></div>
@@ -300,7 +301,7 @@
                 <i class="fa-solid fa-plus"></i>
               </a>
             </div>
-            <a href="html/graphique.html" id="graphique" class="icon_link"
+            <a href="html/graphique.html"  class="icon_link"
               ><i class="fa-solid fa-chart-pie"></i
             ></a>
             <a href="#" class="icon_link"><i class="fa-solid fa-gear"></i></a>
@@ -309,13 +310,9 @@
       </nav>
     </footer>
     <script defer src="script.js"></script>
-    <script defer src="qrcode.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
-
     <script defer>
       window.addEventListener("load", function () {
-        document.getElementById("graphique").scrollIntoView();
+        document.getElementById("moodTitle").scrollIntoView();
       });
     </script>
     <script defer>
@@ -327,6 +324,72 @@
     <script defer>
       document.addEventListener("DOMContentLoaded", function () {
         initializePatientApp();
+      });
+    </script>
+
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cloche = document.getElementById("cloche");
+        const notificationOverlay = document.getElementById(
+          "notificationOverlay"
+        );
+        const notificationBubble =
+          document.getElementById("notificationBubble");
+        const closeButton = document.querySelector(".close-button");
+
+        cloche.addEventListener("click", function () {
+          notificationOverlay.style.display = "block";
+        });
+
+        closeButton.addEventListener("click", function () {
+          notificationOverlay.style.display = "none";
+        });
+      });
+
+      // Gestion de la notification cloche
+      const cloche = document.getElementById("cloche");
+      const notificationOverlay = document.getElementById(
+        "notificationOverlay"
+      );
+
+      // Vérifie si la notification a déjà été affichée aujourd'hui
+      const isNotificationDisplayed = localStorage.getItem(
+        "notificationDisplayed"
+      );
+
+      // Affiche la notification si elle n'a pas été affichée auparavant
+      if (!isNotificationDisplayed) {
+        displayNotification();
+      }
+
+      // Fonction pour afficher la notification
+      function displayNotification() {
+        notificationOverlay.style.display = "block";
+        cloche.classList.add("clignote");
+
+        // Enregistre que la notification a été affichée
+        localStorage.setItem("notificationDisplayed", true);
+      }
+
+      // Ferme la notification
+      function closeNotification() {
+        notificationOverlay.style.display = "none";
+        cloche.classList.remove("clignote");
+      }
+
+      // Gère le clic sur la cloche
+      cloche.addEventListener("click", function () {
+        if (notificationOverlay.style.display === "none") {
+          displayNotification();
+        } else {
+          closeNotification();
+        }
+      });
+
+      // Fermeture de la notification avec la croix
+      const closeButton = document.querySelector(".close-button");
+      closeButton.addEventListener("click", function () {
+        closeNotification();
       });
     </script>
   </body>
