@@ -159,7 +159,7 @@ function createEntryHTML(date, mood) {
 function handleIconScroll() {
   const barsIcon = document.getElementById("bars");
   const chevronIcon = document.getElementById("chevron");
-  const scrollThreshold = 400;
+  const scrollThreshold = 200;
 
   if (document.documentElement.scrollTop > scrollThreshold) {
     barsIcon.style.display = "none";
@@ -173,7 +173,7 @@ function handleIconScroll() {
 // Fonction pour gérer l'affichage de la barre de navigation
 function handleNavBarDisplay() {
   const navFooter = document.getElementById("nav_footer");
-  const scrollThreshold = 400;
+  const scrollThreshold = 200;
 
   if (document.documentElement.scrollTop < scrollThreshold) {
     navFooter.style.display = "none";
