@@ -36,6 +36,10 @@ ul {
     cursor: none;
   }
 
+  button{
+    cursor: none;
+  }
+
   /* Styles for the profile section */
   #container_profil {
     display: flex;
