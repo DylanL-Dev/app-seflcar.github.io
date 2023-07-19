@@ -213,7 +213,7 @@ function downloadHistory() {
   const fileContent = generateHistoryContent(entries);
 
   // Création du fichier à télécharger
-  const fileBlob = new Blob([fileContent], { type: "text/plain" });
+  const fileBlob = new Blob([fileContent], { type: "text/plain;charset=utf-8" }); // Ajout de l'encodage UTF-8
   const downloadLink = document.createElement("a");
   downloadLink.href = URL.createObjectURL(fileBlob);
   downloadLink.download = fileName;

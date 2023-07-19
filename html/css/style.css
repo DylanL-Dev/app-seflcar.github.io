@@ -582,9 +582,9 @@ i {
       transform: translateY(0);
     }
   }
-
   /* End Nav footer */
 
+  /* Style de la Page login */
   .background_login {
     background-color: #ffffff;
   }
@@ -682,7 +682,8 @@ i {
     border-radius: 25px;
     cursor: none;
   }
-
+  /* End de la partie page de login */
+  /* Style de la partie Qrcode */
   .container_qrcode_info {
     display: flex;
     align-items: center;
@@ -752,10 +753,8 @@ i {
   #qrcodeCanvas {
     position: absolute;
     top: 47%;
-    left: 10%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    border: 7px white solid;
+    left: 19%;
+    width: 60%;
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
       rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
@@ -784,4 +783,6 @@ i {
     align-items: center;
     justify-content: space-between;
   }
+
+  /* End de la partie Qrcode */
 }
