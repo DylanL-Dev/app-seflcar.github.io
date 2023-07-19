@@ -213,7 +213,9 @@ function downloadHistory() {
   const fileContent = generateHistoryContent(entries);
 
   // Création du fichier à télécharger
-  const fileBlob = new Blob([fileContent], { type: "text/plain;charset=utf-8" }); // Ajout de l'encodage UTF-8
+  const fileBlob = new Blob([fileContent], {
+    type: "text/plain;charset=utf-8",
+  }); // Ajout de l'encodage UTF-8
   const downloadLink = document.createElement("a");
   downloadLink.href = URL.createObjectURL(fileBlob);
   downloadLink.download = fileName;
@@ -222,7 +224,9 @@ function downloadHistory() {
 
 function generateHistoryContent(entries) {
   const patientName = localStorage.getItem("patientFullName"); // Récupérer le nom complet du patient
-  let fileContent = `<table><tr><th>Date</th><th>Humeur</th><th>Nom du patient</th></tr>`;
+  let fileContent = `<table style="border: solid 2px black;  max-width: 768px; display: flex; align-items: center;     justify-content: space-around; flex-direction: colum;   overflow-y: hidden;   margin: 0;
+  padding: 0;
+  box-sizing: border-box;"><tr><th>Date</th><th>Humeur</th><th>Nom du patient</th></tr>`;
 
   entries.forEach((entry) => {
     fileContent += `<tr><td>${entry.date}</td><td>${entry.mood}</td><td>${patientName}</td></tr>`;

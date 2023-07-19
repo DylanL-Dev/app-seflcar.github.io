@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- En-tête -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="css/node_modules/normalize.css/normalize.css"
+    />
+    <style></style>
+    <script
+      defer
+      src="https://kit.fontawesome.com/79857fa36d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Self-Care</title>
+  </head>
+
+  <body class="backround_graphique">
+    <!--loader-->
+    <div class="loader">
+      <div class="logo_loader">
+        <i class="fa-solid fa-chart-pie"></i>
+      </div>
+    </div>
+    <!--End loader-->
+    <!-- En-tête -->
+    <header>
+      <div class="container_qrcode_info">
+        <a href="../portail.html" class="back_button_graphique">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <a href="#" class="info_graphique">
+          <i class="fa-solid fa-circle-question"></i>
+        </a>
+        <!-- Overlay de notification -->
+        <div class="notification-overlay" id="notificationOverlay">
+          <div class="notification-bubble" id="notificationBubble">
+            <p>Voici la façon dont il fonctionne :</p>
+            <ol>
+              <li>
+                Lorsque vous ouvrez l'application, vous verrez une section
+                appelée "Suivi de mon état émotionnel".
+              </li>
+              <li>
+                Dans cette section, vous pouvez voir un graphique qui représente
+                votre état émotionnel au fil du temps.
+              </li>
+              <li>
+                Le graphique est basé sur les données d'humeur que vous avez
+                enregistrées dans l'application.
+              </li>
+              <li>
+                Plus vous enregistrez d'entrées d'humeur, plus le graphique sera
+                précis et représentatif de votre état émotionnel.
+              </li>
+              <li>
+                Vous pouvez également télécharger l'historique complet de vos
+                données d'humeur en cliquant sur le bouton "Télécharger
+                l'historique". Cela vous permet de conserver une copie de vos
+                données ou de les partager avec votre praticien si nécessaire.
+              </li>
+              <li>
+                Si vous avez des questions, cliquez simplement sur l'icône en
+                forme de point d'interrogation pour obtenir des informations
+                supplémentaires sur l'application et le graphique. Cela vous
+                aidera à mieux comprendre leur fonctionnement.
+              </li>
+            </ol>
+            <span class="close-button">&times;</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Section de suivi de l'état émotionnel -->
+      <section>
+        <div class="container_humeur">
+          <h4>Suivi de mon état émotionnel</h4>
+          <div id="entries"></div>
+          <button id="downloadBtn">Télécharger l'historique</button>
+          <div id="emotionChartContainer">
+            <canvas id="emotionChart"></canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
+    <script defer src="../script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        displayEntries();
+        updateEmotionChart();
+      });
+    </script>
+
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        const infoQrCode = document.querySelector(".info_graphique");
+        const notificationOverlay = document.querySelector(
+          ".notification-overlay"
+        );
+        const notificationBubble = document.querySelector(
+          ".notification-bubble"
+        );
+        const closeButton = document.querySelector(".close-button");
+
+        // Afficher la bulle de notification lorsque vous cliquez sur l'icône
+        infoQrCode.addEventListener("click", function () {
+          notificationOverlay.style.display = "block";
+        });
+
+        // Masquer la bulle de notification lorsque vous cliquez sur le bouton de fermeture
+        closeButton.addEventListener("click", function () {
+          notificationOverlay.style.display = "none";
+        });
+      });
+    </script>
+  </body>
+</html>

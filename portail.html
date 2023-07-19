@@ -279,18 +279,6 @@
                 <p>30 min</p>
               </div>
             </div>
-
-            <!-- Section de suivi de l'état émotionnel -->
-            <section>
-              <div class="container_humeur">
-                <h4>Suivi de mon état émotionnel</h4>
-                <div id="entries"></div>
-                <button id="downloadBtn">Télécharger l'historique</button>
-                <div id="emotionChartContainer">
-                  <canvas id="emotionChart"></canvas>
-                </div>
-              </div>
-            </section>
           </div>
         </div>
       </section>
@@ -304,7 +292,7 @@
             <a href="#container_profil" class="icon_link"
               ><i class="fa-solid fa-house"></i
             ></a>
-            <a href="qrcode.html" class="icon_link"
+            <a href="html/qrcode.html" class="icon_link"
               ><i class="fa-solid fa-qrcode"></i
             ></a>
             <div class="cercle_nav">
@@ -312,7 +300,7 @@
                 <i class="fa-solid fa-plus"></i>
               </a>
             </div>
-            <a href="#emotionChartContainer" class="icon_link"
+            <a href="html/graphique.html" id="graphique" class="icon_link"
               ><i class="fa-solid fa-chart-pie"></i
             ></a>
             <a href="#" class="icon_link"><i class="fa-solid fa-gear"></i></a>
@@ -327,7 +315,7 @@
 
     <script defer>
       window.addEventListener("load", function () {
-        document.getElementById("nav_footer").scrollIntoView();
+        document.getElementById("graphique").scrollIntoView();
       });
     </script>
     <script defer>
