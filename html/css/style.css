@@ -729,7 +729,7 @@ i {
   }
 
   .logo_qrcode img {
-    width: 40%;
+    width: 50%;
   }
 
   .text_qrcode {
@@ -755,7 +755,7 @@ i {
     left: 10%;
     transform: translate(-50%, -50%);
     width: 80%;
-    border: 15px white solid;
+    border: 7px white solid;
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
       rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
