@@ -540,12 +540,7 @@ ul {
     width: 100%;
     padding-top: 50px;
   }
-  .navFooter_planification {
-position: absolute;
-top: 92%;
-left: 50%;
-transform: translate(-50%, -50%);
-  }
+
   .navigation {
     width: 100%;
     display: flex;
