@@ -380,3 +380,5 @@ function resetDataAfterMonth() {
 
 // Appel de la fonction pour réinitialiser les données après un mois
 resetDataAfterMonth();
+
+
