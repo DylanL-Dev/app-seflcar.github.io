@@ -862,14 +862,17 @@ ul {
   }
 
   #btn_annuler {
+    position: absolute;
+    top: 80%;
+    left: 37%;
+    transform: translate(-50%, -50%);
     width: 80%;
     height: 50px;
     margin-left: 10%;
     background-color: #299272;
     color: #ffffff;
-    padding: 10px 20px;
     border: none;
-    border-radius: 25px 25px 0px 0px;
+    border-radius: 15px;
     font-size: 20px;
     cursor: none;
   }
