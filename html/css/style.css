@@ -861,39 +861,5 @@ ul {
     height: 700px;
   }
 
-  .container_annuler {
-    animation: btnAnnuler 1s ease-in-out 3s 1 normal backwards;
-  }
-
-  #btn_annuler {
-    position: absolute;
-    top: 95%;
-    left: 39.5%; /* Changer la valeur de left à 50% */
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 50px;
-    margin-left: 10%;
-    background-color: #299272;
-    color: #ffffff;
-    border: none;
-    border-radius: 15px;
-    font-size: 20px;
-    cursor: none;
-  }
-
-  @keyframes btnAnnuler {
-    0% {
-      transform: translateY(50px);
-      visibility: hidden;
-    }
-    90% {
-      transform: translateY(0);
-      visibility: hidden;
-    }
-
-    100% {
-      transform: translateY(0);
-      visibility: visible;
-    }
-  }
+ 
 }
