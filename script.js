@@ -155,8 +155,6 @@ function createEntryHTML(date, mood) {
   return entryHTML;
 }
 
-
-
 // Variable pour contrôler le téléchargement en cours
 let isDownloading = false;
 
@@ -381,4 +379,24 @@ function resetDataAfterMonth() {
 // Appel de la fonction pour réinitialiser les données après un mois
 resetDataAfterMonth();
 
+///////////////////////////////////////////////////////////////////////////
 
+
+// Fonction pour obtenir les recommandations en fonction de l'émotion sélectionnée
+function getRecommendations(emotion) {
+  // Ici, vous pouvez ajouter la logique pour obtenir les recommandations
+  // en fonction de l'émotion spécifiée. Vous pouvez utiliser des conditions
+  // ou une requête AJAX pour obtenir les recommandations à partir d'une source externe.
+
+  // Exemple de recommandations pour chaque émotion (vous pouvez remplacer ces exemples avec vos propres données)
+  const recommendations = {
+    Furieux: "Recommandation pour gérer la colère...",
+    Déprimé: "Recommandation pour améliorer l'humeur...",
+    Indifférent: "Recommandation pour se sentir plus impliqué...",
+    Heureux: "Recommandation pour cultiver le bonheur...",
+    Fatigué: "Recommandation pour se reposer et récupérer...",
+  };
+
+  // Retourner la recommandation correspondant à l'émotion
+  return recommendations[emotion];
+}
